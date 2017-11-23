@@ -144,6 +144,73 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="introduction">Introduction</h1>
+<h2 id="nextjs">Next.js</h2>
+<p>It is a framework for react applications that does server-side rendering by default, among many other performance optimizations such as:</p>
+<ul>
+<li>Automatic code splitting for faster page loads.</li>
+<li>Webpack-based development environment that supports Hot Module Replacement (HMR)</li>
+<li>Able to deploy with Express or any other Node.js HTTP server</li>
+<li>Customizable with your own Babel and Webpack settings</li>
+</ul>
+<p>Today everyone is familiar with the concept of JavaScript fatigue. Creating a web application with JavaScript is usually difficult with all the packages and options we have. React, webpack, Redux, React-router and many more libraries and tools are often used and require effort to learn.</p>
+<p>With Next.js, we enable developers to build JavaScript web applications with more direct workflow. Just create some files that export React components and deploy your application.</p>
+<h2 id="how-nextjs-works">How Next.js works?</h2>
+<p>We created our project and started a package <code>package.json</code>:</p>
+<pre><code class="lang-bash">  $ mkdir nextjs
+  $ <span class="hljs-built_in">cd</span> nextjs
+  $ npm init -y
+</code></pre>
+<p>Next, we installed Next.js and the React dependencies and created a directory of pages:</p>
+<pre><code class="lang-bash">  $ npm install --save next react react-dom
+  $ mkdir pages
+</code></pre>
+<blockquote>
+<p>pages - Next.js extends this structure by introducing a subdirectory of pages where its top-level components live. With this it does the mapping of the routes.</p>
+</blockquote>
+<p>In the <code>pages</code> directory, we created a file in<code>pages/index.js</code> with the following content:</p>
+<pre><code class="lang-javascript">  <span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>
+  <span class="hljs-keyword">import</span> Link <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;next/link&apos;</span>
+  <span class="hljs-keyword">import</span> { setTimeout } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;timers&apos;</span>;
+
+  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Home</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    <span class="hljs-keyword">static</span> getInitialProps(ctx) {
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>((resolve, reject) =&gt; {
+        setTimeout(() =&gt; {
+          resolve({ name: <span class="hljs-string">&apos;Taller&apos;</span> })
+        }, <span class="hljs-number">500</span>)
+      })
+    }
+    render() {
+      <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{this.props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>
+      )
+    }
+  }
+
+  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Home
+</code></pre>
+<blockquote>
+<p>getInitialProps - It is a great function for the top level of the components (page). It gives access to a number of properties, such as request and response objects, and URL information, such as the path name.</p>
+</blockquote>
+<p>We also created a file called <code>pages/about.js</code> containing this code:</p>
+<pre><code class="lang-javascript">  <span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>
+
+  <span class="hljs-keyword">const</span> About = () =&gt; (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>About poc<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span>
+  )
+
+  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> About
+</code></pre>
+<p>We added a script for the development server to <code>package.json</code>:</p>
+<pre><code class="lang-json">  <span class="hljs-string">&quot;scripts&quot;</span>: {
+    <span class="hljs-string">&quot;dev&quot;</span>: <span class="hljs-string">&quot;next&quot;</span>,
+    <span class="hljs-string">&quot;build&quot;</span>: <span class="hljs-string">&quot;next build&quot;</span>,
+    <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;next start&quot;</span>
+  }
+</code></pre>
+<p>We run this script to start the development server:</p>
+<pre><code class="lang-bash">  $ npm run dev
+</code></pre>
 
                                 
                                 </section>
@@ -179,7 +246,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2017-11-22T19:40:48.395Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-22T19:41:11.856Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2017-11-23T12:19:52.524Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-23T12:18:33.859Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
