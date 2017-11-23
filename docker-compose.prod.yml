@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  book:
+    image: nginx
+    volumes:
+      - ./_book:/usr/share/nginx/html:ro
+    hostname: book
+    expose:
+      - 80
+    environment:
+      - VIRTUAL_HOST=natura-poc-book.dropit.in
+networks:
+  default:
+    external:
+      name: dockerproxy_service-tier
