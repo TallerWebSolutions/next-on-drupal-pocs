@@ -1,31 +1,32 @@
 # Introduction
 
 ## Next.js
-It is a framework for react applications that does server-side rendering by default, among many other performance optimizations such as:
- - Automatic code splitting for faster page loads.
- - Webpack-based development environment that supports Hot Module Replacement (HMR)
- - Able to deploy with Express or any other Node.js HTTP server
- - Customizable with your own Babel and Webpack settings
+É um framework para aplicativos react que faz renderização do lado do servidor por padrão, entre muitas outras otimizações de desempenho como:
+ - Divisão de código automática para cargas de página mais rápidas.
+ - Ambiente de desenvolvimento baseado em Webpack que ofereça suporte a Hot Module Replacement (HMR)
+ - Capaz de implementar com o Express ou qualquer outro servidor HTTP Node.js
+ - Customizável com suas próprias configurações Babel e Webpack
 
-Today everyone is familiar with the concept of JavaScript fatigue. Creating a web application with JavaScript is usually difficult with all the packages and options we have. React, webpack, Redux, React-router and many more libraries and tools are often used and require effort to learn.
+Hoje todos estão familiarizados com o conceito de fadiga de JavaScript. Criar um aplicativo da web com JavaScript geralmente é difícil com todos os pacotes e opções que temos. React, webpack, Redux, React-router e muito mais bibliotecas e ferramentas são frequentemente usadas e exigem esforço para aprender.
 
-With Next.js, we enable developers to build JavaScript web applications with more direct workflow. Just create some files that export React components and deploy your application.
+Com o Next.js, habilitamos os desenvolvedores a criar aplicativos da web JavaScript com fluxo de trabalho mais direto. Basta criar alguns arquivos que exportam componentes do React e implantar seu aplicativo.
 
-## How Next.js works?
-We created our project and started a package `package.json`:
+
+## Como funciona o Next.js ?
+Criamos nosso projeto e inicializamos um pacote `package.json`:
 ```bash
   $ mkdir nextjs
   $ cd nextjs
   $ npm init -y
 ```
-Next, we installed Next.js and the React dependencies and created a directory of pages:
+Em seguida, instalamos Next.js e as dependências do React e criamos um diretório de páginas:
 ```bash
   $ npm install --save next react react-dom
   $ mkdir pages
 ```
-> pages - Next.js extends this structure by introducing a subdirectory of pages where its top-level components live. With this it does the mapping of the routes.
+> pages - Next.js estende essa estrutura introduzindo um subdiretório de páginas onde seus componentes de nível superior vivem. Com isso ele faz o mapeamento das rotas.
 
-In the `pages` directory, we created a file in` pages/index.js` with the following content:
+No diretório `pages`, criamos um arquivo em `pages/index.js` com o seguinte conteúdo:
 ```javascript
   import React from 'react'
   import Link from 'next/link'
@@ -48,9 +49,9 @@ In the `pages` directory, we created a file in` pages/index.js` with the followi
 
   export default Home
 ```
-> getInitialProps - It is a great function for the top level of the components (page). It gives access to a number of properties, such as request and response objects, and URL information, such as the path name.
+> getInitialProps - É uma ótima função para o nível superior dos componentes (page). Ele dá acesso a uma série de propriedades, como a solicitação e objetos de resposta e informações de URL, como o nome do caminho.
 
-We also created a file called `pages/about.js` containing this code:
+Nós também criamos um arquivo chamado `pages/about.js` contendo este código:
 ```javascript
   import React from 'react'
 
@@ -60,7 +61,7 @@ We also created a file called `pages/about.js` containing this code:
 
   export default About
 ```
-We added a script for the development server to `package.json`:
+Adicionamos um script para o servidor de desenvolvimento ao `package.json`:
 ```json
   "scripts": {
     "dev": "next",
@@ -68,7 +69,7 @@ We added a script for the development server to `package.json`:
     "start": "next start"
   }
 ```
-We run this script to start the development server:
+Nós executamos esse script para iniciar o servidor de desenvolvimento:
 ```bash
   $ npm run dev
 ```
