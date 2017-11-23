@@ -1,6 +1,7 @@
-# Introduction
+# Introdução
 
-## Next.js
+![Markdown Course](image/nextjs.png)
+
 É um framework para aplicativos react que faz renderização do lado do servidor por padrão, entre muitas outras otimizações de desempenho como:
  - Divisão de código automática para cargas de página mais rápidas.
  - Ambiente de desenvolvimento baseado em Webpack que ofereça suporte a Hot Module Replacement (HMR)
@@ -11,6 +12,8 @@ Hoje todos estão familiarizados com o conceito de fadiga de JavaScript. Criar u
 
 Com o Next.js, habilitamos os desenvolvedores a criar aplicativos da web JavaScript com fluxo de trabalho mais direto. Basta criar alguns arquivos que exportam componentes do React e implantar seu aplicativo.
 
+# Fluxograma de uso prático:
+![Markdown Course](image/ArquiteturaNaturaNCF.jpg)
 
 ## Como funciona o Next.js ?
 Criamos nosso projeto e inicializamos um pacote `package.json`:

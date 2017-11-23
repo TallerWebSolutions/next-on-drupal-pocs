@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>Introdução · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -90,7 +90,7 @@
                 <a href="./">
             
                     
-                    Introduction
+                    Introdução
             
                 </a>
             
@@ -128,7 +128,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >Introdução</a>
     </h1>
 </div>
 
@@ -143,31 +143,33 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction">Introduction</h1>
-<h2 id="nextjs">Next.js</h2>
-<p>It is a framework for react applications that does server-side rendering by default, among many other performance optimizations such as:</p>
+                                <h1 id="introdu&#xE7;&#xE3;o">Introdu&#xE7;&#xE3;o</h1>
+<p><img src="image/nextjs.png" alt="Markdown Course"></p>
+<p>&#xC9; um framework para aplicativos react que faz renderiza&#xE7;&#xE3;o do lado do servidor por padr&#xE3;o, entre muitas outras otimiza&#xE7;&#xF5;es de desempenho como:</p>
 <ul>
-<li>Automatic code splitting for faster page loads.</li>
-<li>Webpack-based development environment that supports Hot Module Replacement (HMR)</li>
-<li>Able to deploy with Express or any other Node.js HTTP server</li>
-<li>Customizable with your own Babel and Webpack settings</li>
+<li>Divis&#xE3;o de c&#xF3;digo autom&#xE1;tica para cargas de p&#xE1;gina mais r&#xE1;pidas.</li>
+<li>Ambiente de desenvolvimento baseado em Webpack que ofere&#xE7;a suporte a Hot Module Replacement (HMR)</li>
+<li>Capaz de implementar com o Express ou qualquer outro servidor HTTP Node.js</li>
+<li>Customiz&#xE1;vel com suas pr&#xF3;prias configura&#xE7;&#xF5;es Babel e Webpack</li>
 </ul>
-<p>Today everyone is familiar with the concept of JavaScript fatigue. Creating a web application with JavaScript is usually difficult with all the packages and options we have. React, webpack, Redux, React-router and many more libraries and tools are often used and require effort to learn.</p>
-<p>With Next.js, we enable developers to build JavaScript web applications with more direct workflow. Just create some files that export React components and deploy your application.</p>
-<h2 id="how-nextjs-works">How Next.js works?</h2>
-<p>We created our project and started a package <code>package.json</code>:</p>
+<p>Hoje todos est&#xE3;o familiarizados com o conceito de fadiga de JavaScript. Criar um aplicativo da web com JavaScript geralmente &#xE9; dif&#xED;cil com todos os pacotes e op&#xE7;&#xF5;es que temos. React, webpack, Redux, React-router e muito mais bibliotecas e ferramentas s&#xE3;o frequentemente usadas e exigem esfor&#xE7;o para aprender.</p>
+<p>Com o Next.js, habilitamos os desenvolvedores a criar aplicativos da web JavaScript com fluxo de trabalho mais direto. Basta criar alguns arquivos que exportam componentes do React e implantar seu aplicativo.</p>
+<h1 id="fluxograma-de-uso-pr&#xE1;tico">Fluxograma de uso pr&#xE1;tico:</h1>
+<p><img src="image/ArquiteturaNaturaNCF.jpg" alt="Markdown Course"></p>
+<h2 id="como-funciona-o-nextjs-">Como funciona o Next.js ?</h2>
+<p>Criamos nosso projeto e inicializamos um pacote <code>package.json</code>:</p>
 <pre><code class="lang-bash">  $ mkdir nextjs
   $ <span class="hljs-built_in">cd</span> nextjs
   $ npm init -y
 </code></pre>
-<p>Next, we installed Next.js and the React dependencies and created a directory of pages:</p>
+<p>Em seguida, instalamos Next.js e as depend&#xEA;ncias do React e criamos um diret&#xF3;rio de p&#xE1;ginas:</p>
 <pre><code class="lang-bash">  $ npm install --save next react react-dom
   $ mkdir pages
 </code></pre>
 <blockquote>
-<p>pages - Next.js extends this structure by introducing a subdirectory of pages where its top-level components live. With this it does the mapping of the routes.</p>
+<p>pages - Next.js estende essa estrutura introduzindo um subdiret&#xF3;rio de p&#xE1;ginas onde seus componentes de n&#xED;vel superior vivem. Com isso ele faz o mapeamento das rotas.</p>
 </blockquote>
-<p>In the <code>pages</code> directory, we created a file in<code>pages/index.js</code> with the following content:</p>
+<p>No diret&#xF3;rio <code>pages</code>, criamos um arquivo em <code>pages/index.js</code> com o seguinte conte&#xFA;do:</p>
 <pre><code class="lang-javascript">  <span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>
   <span class="hljs-keyword">import</span> Link <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;next/link&apos;</span>
   <span class="hljs-keyword">import</span> { setTimeout } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;timers&apos;</span>;
@@ -190,9 +192,9 @@
   <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Home
 </code></pre>
 <blockquote>
-<p>getInitialProps - It is a great function for the top level of the components (page). It gives access to a number of properties, such as request and response objects, and URL information, such as the path name.</p>
+<p>getInitialProps - &#xC9; uma &#xF3;tima fun&#xE7;&#xE3;o para o n&#xED;vel superior dos componentes (page). Ele d&#xE1; acesso a uma s&#xE9;rie de propriedades, como a solicita&#xE7;&#xE3;o e objetos de resposta e informa&#xE7;&#xF5;es de URL, como o nome do caminho.</p>
 </blockquote>
-<p>We also created a file called <code>pages/about.js</code> containing this code:</p>
+<p>N&#xF3;s tamb&#xE9;m criamos um arquivo chamado <code>pages/about.js</code> contendo este c&#xF3;digo:</p>
 <pre><code class="lang-javascript">  <span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>
 
   <span class="hljs-keyword">const</span> About = () =&gt; (
@@ -201,14 +203,14 @@
 
   <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> About
 </code></pre>
-<p>We added a script for the development server to <code>package.json</code>:</p>
+<p>Adicionamos um script para o servidor de desenvolvimento ao <code>package.json</code>:</p>
 <pre><code class="lang-json">  <span class="hljs-string">&quot;scripts&quot;</span>: {
     <span class="hljs-string">&quot;dev&quot;</span>: <span class="hljs-string">&quot;next&quot;</span>,
     <span class="hljs-string">&quot;build&quot;</span>: <span class="hljs-string">&quot;next build&quot;</span>,
     <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;next start&quot;</span>
   }
 </code></pre>
-<p>We run this script to start the development server:</p>
+<p>N&#xF3;s executamos esse script para iniciar o servidor de desenvolvimento:</p>
 <pre><code class="lang-bash">  $ npm run dev
 </code></pre>
 
@@ -246,7 +248,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2017-11-23T12:19:52.524Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-23T12:18:33.859Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Introdução","level":"1.1","depth":1,"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2017-11-23T13:47:49.128Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-11-23T13:35:05.226Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
