@@ -14,6 +14,7 @@ Em seguida, instalamos Next.js e as dependências do React e criamos um diretór
   $ npm install --save next react react-dom
   $ mkdir pages
 ```
+
 > pages - Next.js estende essa estrutura introduzindo um subdiretório de páginas onde seus componentes de nível superior vivem. Com isso ele faz o mapeamento das rotas.
 
 No diretório `pages`, criamos um arquivo em `pages/index.js` com o seguinte conteúdo:
@@ -21,7 +22,7 @@ No diretório `pages`, criamos um arquivo em `pages/index.js` com o seguinte con
 ```javascript
   import React from 'react'
   import Link from 'next/link'
-  import { setTimeout } from 'timers';
+  import { setTimeout } from 'timers'
 
   class Home extends React.Component {
     static getInitialProps(ctx) {
@@ -57,11 +58,13 @@ Nós também criamos um arquivo chamado `pages/about.js` contendo este código:
 Adicionamos um script para o servidor de desenvolvimento ao `package.json`:
 
 ```json
+{
   "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start"
   }
+}
 ```
 
 Nós executamos esse script para iniciar o servidor de desenvolvimento:
