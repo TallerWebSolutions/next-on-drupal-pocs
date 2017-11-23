@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import { setTimeout } from 'timers';
+import { setTimeout } from 'timers'
 
 class Home extends React.Component {
   static getInitialProps(ctx) {
