@@ -1,2 +1,10 @@
 import React from 'react'
-export default () => <div>Hello, apollo world!</div>
+
+import QueueLink from 'apollo-link-queue'
+
+const queueLink = new QueueLink()
+
+// To start queueing requests
+queueLink.close()
+
+export default () => <div>{ console.log(queueLink) }Hello, apollo world!</div>
