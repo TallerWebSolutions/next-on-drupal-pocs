@@ -1,12 +1,6 @@
-import Header from '../components/Header'
-import Submit from '../components/Submit'
-import PostList from '../components/PostList'
-import withData from '../lib/withData'
+import React from 'react'
+import '../utils/offline-install'; // Get our service worker on the page
 
-export default withData(props => (
-  <div>
-    <Header pathname={ props.url.pathname } />
-    <Submit />
-    <PostList />
-  </div>
-))
+export default () => (
+  <div>Welcome to next.js!</div>
+)

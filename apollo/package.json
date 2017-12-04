@@ -4,15 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next"
-  },
+    "dev": "NODE_ENV=development && node server",
+    "build": "NODE_ENV=production && next build",
+    "start": "NODE_ENV=production && node server"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "apollo-client-preset": "^1.0.4",
     "apollo-link-queue": "^1.0.3",
+    "express": "^4.16.2",
     "graphql": "^0.11.7",
     "graphql-anywhere": "^4.0.2",
     "graphql-tag": "^2.5.0",
@@ -22,5 +24,8 @@
     "react": "^16.2.0",
     "react-apollo": "^2.0.1",
     "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "sw-precache-webpack-plugin": "^0.11.4"
   }
 }
