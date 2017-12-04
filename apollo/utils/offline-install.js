@@ -3,7 +3,6 @@ if (
   typeof window !== 'undefined' &&
   'serviceWorker' in navigator
 ) {
-  alert('truco')
   navigator.serviceWorker
     .register('/sw.js', {
       scope: './'
