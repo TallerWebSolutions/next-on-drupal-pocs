@@ -1,10 +1,12 @@
-import React from 'react'
+import Header from '../components/Header'
+import Submit from '../components/Submit'
+import PostList from '../components/PostList'
+import withData from '../lib/withData'
 
-import QueueLink from 'apollo-link-queue'
-
-const queueLink = new QueueLink()
-
-// To start queueing requests
-queueLink.close()
-
-export default () => <div>{ console.log(queueLink) }Hello, apollo world!</div>
+export default withData(props => (
+  <div>
+    <Header pathname={ props.url.pathname } />
+    <Submit />
+    <PostList />
+  </div>
+))
