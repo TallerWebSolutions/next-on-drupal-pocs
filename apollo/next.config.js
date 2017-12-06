@@ -7,15 +7,20 @@ module.exports = {
       // Service Worker
       config.plugins.push(
         new SWPrecacheWebpackPlugin({
-          filename: 'sw.js',
+          cacheId: 'pwa-poc',
+          filename: 'service-worker.js',
           minify: true,
+          handleFetch: true,
           staticFileGlobsIgnorePatterns: [/\.next\//],
           staticFileGlobs: [
             'static/**/*' // Precache all static files by default
           ],
-          forceDelete: true,
           runtimeCaching: [
             // Example with different handlers
+            {
+              handler: 'cacheFirst',
+              urlPattern: /^https:*/
+            },
             {
               handler: 'fastest',
               urlPattern: /[.](png|jpg|css)/

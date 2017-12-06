@@ -55,7 +55,7 @@ export default ComposedComponent => {
         // Extract query data from the Apollo store
         serverState = {
           apollo: {
-            data: apollo.cache.extract()
+            data: apollo.cache.extract(true)
           }
         }
       }
