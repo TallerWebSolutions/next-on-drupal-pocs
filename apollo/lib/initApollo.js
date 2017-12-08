@@ -1,5 +1,7 @@
+import { ApolloLink } from 'apollo-link'
+import { RetryLink } from 'apollo-link-retry'
 import { ApolloClient } from 'apollo-client'
-import { HttpLink } from 'apollo-link-http'
+import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import fetch from 'isomorphic-unfetch'
 
@@ -11,15 +13,40 @@ if (!process.browser) {
 }
 
 function create (initialState) {
+  const cache = new InMemoryCache().restore(initialState || {})
+
+  const httpLink = createHttpLink({
+    uri: 'https://api.graph.cool/simple/v1/cjatzjtkl26rv0105sypiowg2',
+    credentials: 'same-origin'
+  })
+
+  const addDatesLink = new ApolloLink((operation, forward) => {
+    return forward(operation).map((response) => {
+      return response
+    })
+  })
+
+  // use with apollo-client
+  const link = addDatesLink.concat(httpLink)
+
   return new ApolloClient({
     connectToDevTools: process.browser,
     ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
-    link: new HttpLink({
-      uri: 'https://api.graph.cool/simple/v1/cjatzjtkl26rv0105sypiowg2', // Server URL (must be absolute)
-      credentials: 'same-origin' // Additional fetch() options like `credentials` or `headers`
-    }),
-    cache: new InMemoryCache().restore(initialState || {})
+    cache: cache,
+    link
   })
+
+
+  // return new ApolloClient({
+  //   connectToDevTools: process.browser,
+  //   ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
+  //   link: new HttpLink({
+  //     uri: 'https://api.graph.cool/simple/v1/cjatzjtkl26rv0105sypiowg2', // Server URL (must be absolute)
+  //     credentials: 'same-origin' // Additional fetch() options like `credentials` or `headers`
+  //   }),
+  //   cache: cache,
+  //   link
+  // })
 }
 
 export default function initApollo (initialState) {

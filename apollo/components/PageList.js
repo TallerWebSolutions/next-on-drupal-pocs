@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import ErrorMessage from './ErrorMessage'
@@ -12,7 +13,9 @@ function PageList ({ data: { loading, error, allPages } }) {
             <li key={page.id}>
               <div>
                 <span>{index + 1}. </span>
-                <a href="/products">{page.description}</a>
+                <Link href="/products">
+                  <a>{page.description}</a>
+                </Link>
               </div>
             </li>
           )}
