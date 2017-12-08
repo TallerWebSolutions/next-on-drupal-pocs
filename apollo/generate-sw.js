@@ -78,7 +78,7 @@ self.addEventListener('install', e => {
         '/',
         '/products',
         '/about',
-      //  'https://api.graph.cool/simple/v1/cjatzjtkl26rv0105sypiowg2'
+       'https://api.graph.cool/simple/v1/cjatzjtkl26rv0105sypiowg2'
       ])
       .then(() => self.skipWaiting())
     })
@@ -101,6 +101,9 @@ self.addEventListener('fetch', event => {
 					return response
 				})
 			})
+			.catch(() => {
+      	return caches.match(event.request)
+    	})
     })
   )
 })

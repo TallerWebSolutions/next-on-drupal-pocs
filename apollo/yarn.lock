@@ -3564,6 +3564,10 @@ object-keys@^1.0.10, object-keys@^1.0.8:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.0.11.tgz#c54601778ad560f1142ce0e01bcca8b56d13426d"
 
+object-to-querystring@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/object-to-querystring/-/object-to-querystring-1.0.4.tgz#fb5b87ee93d31949cc063bddbbd1f4567dbf7a57"
+
 object.assign@^4.0.4:
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/object.assign/-/object.assign-4.0.4.tgz#b1c9cc044ef1b9fe63606fc141abbb32e14730cc"
