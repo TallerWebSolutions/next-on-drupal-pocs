@@ -5,4 +5,4 @@
   * [Exemplos com Next.js](docs/NEXTJS_EXAMPLES.md)
 * [PWA](docs/APOLLO.md)
   * [Criando um projeto](docs/APOLLO_BASIC.md)
-  * [Configurando o PWA](docs/APOLLO_PWA.md)
+  * [Configurando](docs/APOLLO_PWA.md)
