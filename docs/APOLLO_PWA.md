@@ -30,6 +30,10 @@ Na raíz do projeto vamos criar o arquivo `manifest.json`
 
 # Criando o `service-worker`
 
+## Pré-requisitos
+ - Compatibilidade de navegadores: O número de opções de navegador está crescendo. Service workers são compatíveis com Firefox e Opera.
+ - HTTPS: Durante o desenvolvimento, você poderá usar service workers por meio do localhost. No entanto, para implantá-lo em um site, será necessário ter o HTTPS instalado no servidor.
+
 Criamos um arquivo `generate-sw.js` na raíz do projeto para gerar o `service-worker` da nossa aplicação:
 
 ```javascript
