@@ -126,21 +126,31 @@ self.addEventListener('activate',  event => {
 
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request).then(response => {
-      if (response) {
-        return response
-      }
+    caches.match(event.request)
+      .then(response => {
+        if (response) {
+          return response
+        }
 
-			return fetch(event.request).then(response => {
-				return caches.open(staticCacheName).then(cache => {
-					return response
-				})
-			})
-			.catch(() => {
-      	return caches.match(event.request)
-    	})
-    })
-  )
+        var fetchRequest = event.request.clone()
+
+        return fetch(fetchRequest).then(response => {
+            if(!response || response.status !== 200 || response.type !== 'basic') {
+              return response
+            }
+
+            var responseToCache = response.clone()
+
+            caches.open(staticCacheName)
+              .then(cache => {
+                cache.put(event.request, responseToCache)
+              })
+
+            return response
+          }
+        )
+      })
+    )
 })
 `
 
@@ -156,6 +166,14 @@ app()
 ```
 
 > generate-sw - Irá gerar o service-worker.js dentro do build do nextjs no diretório `.next/`
+
+> Event fetch - O que estamos fazendo é:
+ - Adicionar um retorno de chamada a .then() na solicitação fetch.
+ - Após obter uma resposta, executar as seguintes verificações:
+   - Verificar se a resposta é válida.
+   - Verificar se o status da resposta é 200
+   - Verificar se o tipo de resposta é basic, o que indica que é uma solicitação de nossa origem. Isso significa que solicitações de ativos de terceiros não são armazenadas no cache.
+ - Se todas as verificações forem bem-sucedidas, clonaremos a resposta. O motivo para isso é que, como a resposta é um Stream, o corpo poderá ser consumido apenas uma vez. Como queremos retornar a resposta para uso pelo navegador, bem como passá-la para uso pelo cache, precisamos cloná-la para podermos enviá-la ao navegador e ao cache.
 
 Alteramos o `scripts` do `package.json` ficando assim:
 

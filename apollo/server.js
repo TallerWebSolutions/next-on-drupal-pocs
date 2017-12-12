@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
 const next = require('next')
+let cors = require('cors')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dir: '.', dev })
@@ -10,6 +11,7 @@ app.prepare()
   .then(_ => {
     const server = express()
 
+    server.use(cors())
     // serve service worker
     server.get('/service-worker.js', (req, res) => res.sendFile(path.resolve('./.next/service-worker.js')))
 

@@ -5,7 +5,8 @@ if (
 ) {
   navigator.serviceWorker
     .register('/service-worker.js', {
-      scope: './'
+      scope: './',
+      insecure: true 
     })
     .then(reg => {
       reg.onupdatefound = () => {
