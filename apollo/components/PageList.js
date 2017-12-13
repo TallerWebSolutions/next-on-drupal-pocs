@@ -11,15 +11,32 @@ function PageList ({ data: { loading, error, allPages } }) {
         <ul>
           {allPages.map((page, index) =>
             <li key={page.id}>
-              <div>
-                <span>{index + 1}. </span>
+                <img src={`../static/img/${page.image}`} alt='pages' />
                 <Link href="/products">
-                  <a>{page.description}</a>
+                  <a><p>{page.description}</p></a>
                 </Link>
-              </div>
             </li>
           )}
         </ul>
+        <style jsx>{`
+          ul {
+            padding-left: 0px;
+            list-style-type: none;
+            margin-top: 10px;
+          }
+          ul img {
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            margin: 0 20px 10px 0;
+          }
+          li {
+            padding-right: 20px;
+            border-left: none;
+            border-right: none;
+            display: inline-block;
+          }
+        `}</style>
       </section>
     )
   }
@@ -31,6 +48,7 @@ export const allPages = gql`
     allPages {
       id
       description
+      image
     }
   }
 `

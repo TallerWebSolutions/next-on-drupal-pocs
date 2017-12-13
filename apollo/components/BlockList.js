@@ -10,13 +10,33 @@ function BlockList ({ data: { loading, error, allBlocks } }) {
         <ul>
           {allBlocks.map((block, index) =>
             <li key={block.id}>
-              <div>
-                <span>{index + 1}. </span>
-                <a href='javascript:;'>{block.title}</a>
-              </div>
+                <img src={`../static/img/${block.image}`} alt='products' />
+                <p>{block.title}</p>
             </li>
           )}
         </ul>
+        <style jsx>{`
+          ul {
+            padding-left: 0px;
+            list-style-type: none;
+            margin-top: 10px;
+          }
+          ul img {
+            float: left;
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            margin: 0 20px 10px 0;
+          }
+          p {
+            overflow: hidden;
+            flex-basis: 20%;
+          }
+          li {
+            display: flex;
+            flex-basis: 60%;
+          }
+        `}</style>
       </section>
     )
   }
@@ -28,8 +48,9 @@ export const allBlocks = gql`
     allBlocks {
       id
       title
+      image
       page(filter: {
-        description: "Products"
+        id: "cjb3mcwvcgj030144lpdxu8et"
       }) {
         id
       }
