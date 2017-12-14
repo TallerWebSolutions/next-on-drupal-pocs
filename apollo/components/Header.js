@@ -20,7 +20,6 @@ export default ({ pathname }) => (
         margin-right: 15px;
         text-decoration: none;
         padding: 10px;
-        display: block;
         border: 1px solid #F2F2F2;
         color: #999;
       }
