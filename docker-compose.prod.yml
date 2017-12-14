@@ -3,6 +3,9 @@ version: '2'
 services:
   pwa_apollo_offline:
     image: node:8.5
+    build:
+     context: ./apollo
+     dockerfile: Dockerfile
     volumes:
       - ./apollo:/pwa_apollo_offline
     hostname: pwaapollooffline
