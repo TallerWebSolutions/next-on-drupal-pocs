@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import ErrorMessage from './ErrorMessage'
@@ -10,8 +11,9 @@ function BlockList ({ data: { loading, error, allBlocks } }) {
         <ul>
           {allBlocks.map((block, index) =>
             <li key={block.id}>
-                <img src={`../static/img/${block.image}`} alt='products' />
-                <p>{block.title}</p>
+              <img src={`/static/${block.image}`} alt='products' />
+              <h4>{block.title}</h4>
+              <p>description product</p>
             </li>
           )}
         </ul>
@@ -22,19 +24,16 @@ function BlockList ({ data: { loading, error, allBlocks } }) {
             margin-top: 10px;
           }
           ul img {
-            float: left;
-            width: 100px;
-            height: 100px;
+            width: 100%;
+            height: auto;
             display: inline-block;
             margin: 0 20px 10px 0;
           }
-          p {
-            overflow: hidden;
-            flex-basis: 20%;
-          }
           li {
-            display: flex;
-            flex-basis: 60%;
+            padding-right: 20px;
+            border-left: none;
+            border-right: none;
+            display: inline-block;
           }
         `}</style>
       </section>
@@ -43,24 +42,19 @@ function BlockList ({ data: { loading, error, allBlocks } }) {
   return <div>Loading</div>
 }
 
-export const allBlocks = gql`
-  query allBlocks {
+export const blocks = gql`
+  query blocks {
     allBlocks {
       id
       title
       image
-      page(filter: {
-        id: "cjb3mcwvcgj030144lpdxu8et"
-      }) {
-        id
-      }
     }
   }
 `
 
 // The `graphql` wrapper executes a GraphQL query and makes the results
 // available on the `data` prop of the wrapped component (PostList)
-export default graphql(allBlocks, {
+export default graphql(blocks, {
   props: ({ data }) => ({
     data
   })

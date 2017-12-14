@@ -6,6 +6,6 @@ import withData from '../lib/withData'
 export default withData((props) => (
   <App>
     <Header pathname={props.url.pathname} />
-    <BlockList />
+    <BlockList pageId={props.url.query.pageId} />
   </App>
 ))

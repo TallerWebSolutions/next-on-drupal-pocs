@@ -172,9 +172,9 @@ apollo-cache-inmemory@^1.1.2:
     apollo-utilities "^1.0.3"
     graphql-anywhere "^4.0.2"
 
-apollo-cache-persist@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/apollo-cache-persist/-/apollo-cache-persist-0.0.1.tgz#3bad907aa2e9ccc265649cc83af0b34f38e29313"
+apollo-cache-persist@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/apollo-cache-persist/-/apollo-cache-persist-0.1.0.tgz#f9520e4314e0d6e7c0d5238cc25718beaa8b2063"
 
 apollo-cache@^1.0.2:
   version "1.0.2"

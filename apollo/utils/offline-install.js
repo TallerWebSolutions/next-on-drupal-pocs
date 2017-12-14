@@ -4,9 +4,16 @@ if (
   'serviceWorker' in navigator
 ) {
   navigator.serviceWorker
+    .getRegistration('./').then(function(registrations) {
+      console.log('agora', registrations)
+        registrations.unregister().then(function(boolean) {
+            console.log(boolean)
+        })
+  })
+  navigator.serviceWorker
     .register('/service-worker.js', {
       scope: './',
-      insecure: true 
+      insecure: true
     })
     .then(reg => {
       reg.onupdatefound = () => {

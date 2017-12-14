@@ -39,9 +39,15 @@ export default ComposedComponent => {
         try {
           // Run all GraphQL queries
           await getDataFromTree(
-            <ApolloProvider client={apollo}>
-              <ComposedComponent url={url} {...composedInitialProps} />
-            </ApolloProvider>
+            <div>
+              <Head>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta charSet="utf-8" />
+              </Head>
+              <ApolloProvider client={apollo}>
+                <ComposedComponent url={url} {...composedInitialProps} />
+              </ApolloProvider>
+            </div>
           )
         } catch (error) {
           // Prevent Apollo Client GraphQL errors from crashing SSR.
@@ -50,7 +56,7 @@ export default ComposedComponent => {
         }
         // getDataFromTree does not call componentWillUnmount
         // head side effect therefore need to be cleared manually
-        Head.rewind()
+        //Head.rewind()
 
         // Extract query data from the Apollo store
         serverState = {
@@ -73,9 +79,15 @@ export default ComposedComponent => {
 
     render () {
       return (
-        <ApolloProvider client={this.apollo}>
-          <ComposedComponent {...this.props} />
-        </ApolloProvider>
+        <div>
+          <Head>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta charSet="utf-8" />
+          </Head>
+          <ApolloProvider client={this.apollo}>
+            <ComposedComponent {...this.props} />
+          </ApolloProvider>
+        </div>
       )
     }
   }

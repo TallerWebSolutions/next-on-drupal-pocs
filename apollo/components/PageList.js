@@ -1,3 +1,4 @@
+import Router from 'next/router'
 import Link from 'next/link'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
@@ -11,10 +12,12 @@ function PageList ({ data: { loading, error, allPages } }) {
         <ul>
           {allPages.map((page, index) =>
             <li key={page.id}>
-                <img src={`../static/img/${page.image}`} alt='pages' />
-                <Link href="/products">
-                  <a><p>{page.description}</p></a>
-                </Link>
+              <Link href='/products'>
+                <a>
+                  <img src={`/static/${page.image}`} alt='pages' />
+                  <p>{page.description}</p>
+                </a>
+              </Link>
             </li>
           )}
         </ul>
@@ -25,8 +28,8 @@ function PageList ({ data: { loading, error, allPages } }) {
             margin-top: 10px;
           }
           ul img {
-            width: 100px;
-            height: 100px;
+            width: 100%;
+            height: auto;
             display: inline-block;
             margin: 0 20px 10px 0;
           }
@@ -35,6 +38,21 @@ function PageList ({ data: { loading, error, allPages } }) {
             border-left: none;
             border-right: none;
             display: inline-block;
+          }
+          hr {
+             display: block;
+             position: relative;
+             padding: 0;
+             margin: 8px auto;
+             height: 0;
+             width: 100%;
+             max-height: 0;
+             font-size: 1px;
+             line-height: 0;
+             clear: both;
+             border: none;
+             border-top: 1px solid #aaaaaa;
+             border-bottom: 1px solid #ffffff;
           }
         `}</style>
       </section>

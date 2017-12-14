@@ -12,13 +12,16 @@ No diretório `lib`, criamos um arquivo em `lib/initApollo.js` com o seguinte co
 
 ```javascript
 import { ApolloLink } from 'apollo-link'
+import { RetryLink } from 'apollo-link-retry'
 import { ApolloClient } from 'apollo-client'
 import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
+import { persistCache } from 'apollo-cache-persist'
 import fetch from 'isomorphic-unfetch'
 
 let apolloClient = null
 
+// Polyfill fetch() on the server (used by apollo-client)
 if (!process.browser) {
   global.fetch = fetch
 }
@@ -31,27 +34,39 @@ function create (initialState) {
     credentials: 'same-origin'
   })
 
+  if (process.browser) {
+    const per = persistCache({
+      cache,
+      storage: window.localStorage,
+      debug: true
+    })
+  }
+
   const addDatesLink = new ApolloLink((operation, forward) => {
     return forward(operation).map((response) => {
       return response
     })
   })
 
+  // use with apollo-client
   const link = addDatesLink.concat(httpLink)
 
   return new ApolloClient({
     connectToDevTools: process.browser,
-    ssrMode: !process.browser,
+    ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
     cache: cache,
     link
   })
 }
 
 export default function initApollo (initialState) {
+  // Make sure to create a new client for every server-side request so that data
+  // isn't shared between connections (which would be bad)
   if (!process.browser) {
     return create(initialState)
   }
 
+  // Reuse client on the client-side
   if (!apolloClient) {
     apolloClient = create(initialState)
   }
@@ -238,6 +253,7 @@ export default graphql(allPages, {
 Depois criamos um arquivo em `components/BlockList.js` com o seguinte conteúdo:
 
 ```javascript
+import Link from 'next/link'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import ErrorMessage from './ErrorMessage'
@@ -250,34 +266,50 @@ function BlockList ({ data: { loading, error, allBlocks } }) {
         <ul>
           {allBlocks.map((block, index) =>
             <li key={block.id}>
-              <div>
-                <span>{index + 1}. </span>
-                <a href='javascript:;'>{block.title}</a>
-              </div>
+              <img src={`/static/${block.image}`} alt='products' />
+              <h4>{block.title}</h4>
+              <p>description product</p>
             </li>
           )}
         </ul>
+        <style jsx>{`
+          ul {
+            padding-left: 0px;
+            list-style-type: none;
+            margin-top: 10px;
+          }
+          ul img {
+            width: 100%;
+            height: auto;
+            display: inline-block;
+            margin: 0 20px 10px 0;
+          }
+          li {
+            padding-right: 20px;
+            border-left: none;
+            border-right: none;
+            display: inline-block;
+          }
+        `}</style>
       </section>
     )
   }
   return <div>Loading</div>
 }
 
-export const allBlocks = gql`
-  query allBlocks {
+export const blocks = gql`
+  query blocks {
     allBlocks {
       id
       title
-      page(filter: {
-        description: "Products"
-      }) {
-        id
-      }
+      image
     }
   }
 `
 
-export default graphql(allBlocks, {
+// The `graphql` wrapper executes a GraphQL query and makes the results
+// available on the `data` prop of the wrapped component (PostList)
+export default graphql(blocks, {
   props: ({ data }) => ({
     data
   })

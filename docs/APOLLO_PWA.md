@@ -108,7 +108,7 @@ function app() {
 
 const swSnippet = (precache) =>
 `
-let staticCacheName = 'pwa-poc-v1'
+var staticCacheName = 'pwa'
 
 self.addEventListener('install', e => {
   e.waitUntil(
@@ -116,8 +116,13 @@ self.addEventListener('install', e => {
       return cache.addAll([
         '/',
         '/products',
-        '/about',
-       'https://api.graph.cool/simple/v1/cjatzjtkl26rv0105sypiowg2'
+				'/static/47881-0.jpg',
+				'/static/49057-0_0.jpg',
+				'/static/77144-0.jpg',
+				'/static/80417-0.jpg',
+				'/static/81017-0.jpg',
+				'/static/82290-0.jpg',
+				'/static/84734-0.jpg'
       ])
       .then(() => self.skipWaiting())
     })
@@ -128,33 +133,44 @@ self.addEventListener('activate',  event => {
   event.waitUntil(self.clients.claim())
 })
 
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request)
-      .then(response => {
+      .then(function(response) {
+        // Cache hit - return response
         if (response) {
-          return response
+          return response;
         }
 
-        var fetchRequest = event.request.clone()
+        // IMPORTANT: Clone the request. A request is a stream and
+        // can only be consumed once. Since we are consuming this
+        // once by cache and once by the browser for fetch, we need
+        // to clone the response.
+        var fetchRequest = event.request.clone();
 
-        return fetch(fetchRequest).then(response => {
+        return fetch(fetchRequest).then(
+          function(response) {
+            // Check if we received a valid response
             if(!response || response.status !== 200 || response.type !== 'basic') {
-              return response
+              return response;
             }
 
-            var responseToCache = response.clone()
+            // IMPORTANT: Clone the response. A response is a stream
+            // and because we want the browser to consume the response
+            // as well as the cache consuming the response, we need
+            // to clone it so we have two streams.
+            var responseToCache = response.clone();
 
             caches.open(staticCacheName)
-              .then(cache => {
-                cache.put(event.request, responseToCache)
-              })
+              .then(function(cache) {
+                cache.put(event.request, responseToCache);
+              });
 
-            return response
+            return response;
           }
-        )
+        );
       })
-    )
+    );
 })
 `
 
@@ -178,6 +194,7 @@ app()
    - Verificar se o status da resposta é 200
    - Verificar se o tipo de resposta é basic, o que indica que é uma solicitação de nossa origem. Isso significa que solicitações de ativos de terceiros não são armazenadas no cache.
  - Se todas as verificações forem bem-sucedidas, clonaremos a resposta. O motivo para isso é que, como a resposta é um Stream, o corpo poderá ser consumido apenas uma vez. Como queremos retornar a resposta para uso pelo navegador, bem como passá-la para uso pelo cache, precisamos cloná-la para podermos enviá-la ao navegador e ao cache.
+> ATENÇÃO - Ao trabalhar com query no next/router o service-worker da um error e automaticamente ja faz um unregister. Pois o nextjs gera uma url como por exemplo: http://localhost:3000/products?param=data
 
 Alteramos o `scripts` do `package.json` ficando assim:
 
@@ -202,8 +219,16 @@ if (
   'serviceWorker' in navigator
 ) {
   navigator.serviceWorker
+    .getRegistration('./').then(function(registrations) {
+      console.log('agora', registrations)
+        registrations.unregister().then(function(boolean) {
+            console.log(boolean)
+        })
+  })
+  navigator.serviceWorker
     .register('/service-worker.js', {
-      scope: './'
+      scope: './',
+      insecure: true
     })
     .then(reg => {
       reg.onupdatefound = () => {

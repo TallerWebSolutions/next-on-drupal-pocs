@@ -3,6 +3,7 @@ import { RetryLink } from 'apollo-link-retry'
 import { ApolloClient } from 'apollo-client'
 import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
+import { persistCache } from 'apollo-cache-persist'
 import fetch from 'isomorphic-unfetch'
 
 let apolloClient = null
@@ -19,6 +20,14 @@ function create (initialState) {
     uri: 'https://api.graph.cool/simple/v1/cjatzjtkl26rv0105sypiowg2',
     credentials: 'same-origin'
   })
+
+  if (process.browser) {
+    const per = persistCache({
+      cache,
+      storage: window.localStorage,
+      debug: true
+    })
+  }
 
   const addDatesLink = new ApolloLink((operation, forward) => {
     return forward(operation).map((response) => {
