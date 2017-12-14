@@ -77,6 +77,7 @@ self.addEventListener('install', e => {
       return cache.addAll([
         '/',
         '/products',
+				'/about',
 				'/static/47881-0.jpg',
 				'/static/49057-0_0.jpg',
 				'/static/77144-0.jpg',
