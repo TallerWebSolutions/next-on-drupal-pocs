@@ -13,7 +13,7 @@ function BlockList ({ data: { loading, error, allBlocks } }) {
             <li key={block.id}>
               <img src={`/static/${block.image}`} alt='products' />
               <h4>{block.title}</h4>
-              <p>description product</p>
+              <p>Product description. consequat excepturi ullam aliquip. Egestas quidem gravida iaculis, voluptates ratione debitis.</p>
             </li>
           )}
         </ul>
