@@ -1,0 +1,17 @@
+{
+  "name": "Natura POC",
+  "short_name": "NCF POC",
+  "lang": "pt-br",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#E64C3B",
+  "theme_color": "#E64C3B",  
+  "icons": [
+    {
+      "src": "/static/gota.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
