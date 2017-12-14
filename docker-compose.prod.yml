@@ -1,6 +1,18 @@
 version: '2'
 
 services:
+  pwa_apollo_offline:
+    image: node:8.5
+    volumes:
+      - ./apollo:/pwa_apollo_offline
+    hostname: pwaapollooffline
+    command: "yarn start"
+    working_dir: /pwa_apollo_offline
+    ports:
+      - 3000:80
+    environment:
+      - VIRTUAL_HOST=natura-pwa-apollo-offline.dropit.in
+
   book:
     image: nginx
     volumes:
