@@ -31,6 +31,7 @@
     "react": "^16.2.0",
     "react-apollo": "^2.0.1",
     "react-dom": "^16.2.0",
+    "styled-components": "^2.2.4",
     "sw-precache-webpack-plugin": "^0.11.4"
   }
 }
