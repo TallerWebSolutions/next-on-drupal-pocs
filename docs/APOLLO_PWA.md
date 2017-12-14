@@ -10,7 +10,7 @@ Usando o manifesto do app da Web, seu aplicativo pode:
  - Acompanhar se o aplicativo foi iniciado da tela inicial ou da barra de URL
 
 
-Na raíz do projeto vamos criar o arquivo `manifest.json`
+Na raíz do projeto vamos criar o arquivo `manifest.json`.
 
 ```json
 {
