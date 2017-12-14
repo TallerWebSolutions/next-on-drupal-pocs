@@ -39,20 +39,13 @@ function PageList ({ data: { loading, error, allPages } }) {
             border-right: none;
             display: inline-block;
           }
-          hr {
-             display: block;
-             position: relative;
-             padding: 0;
-             margin: 8px auto;
-             height: 0;
-             width: 100%;
-             max-height: 0;
-             font-size: 1px;
-             line-height: 0;
-             clear: both;
-             border: none;
-             border-top: 1px solid #aaaaaa;
-             border-bottom: 1px solid #ffffff;
+          a {
+            font-size: 14px;
+            margin-right: 15px;
+            text-decoration: none;
+            color: #333;
+            text-align: center;
+            text-transform: uppercase;
           }
         `}</style>
       </section>
