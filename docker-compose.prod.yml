@@ -9,7 +9,6 @@ services:
     volumes:
       - ./apollo:/pwa_apollo_offline
     hostname: pwaapollooffline
-    command: "yarn start"
     ports:
       - 3000:80
     environment:
