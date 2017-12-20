@@ -1,14 +1,14 @@
 # Criando um projeto
 
-Criamos o projeto seguindo [Introdução do Next.js](NEXTJS.md) e para utilizar o apollo-client iremos seguir o exemplo [Com apollo-client](https://github.com/zeit/next.js/tree/canary/examples/with-apollo) e implementar o PWA.
+Criar o projeto seguindo a [Introdução ao Next.js](NEXTJS.md). Para utilizar o [Apollo](https://www.apollographql.com/client/) iremos partir do [exemplo com apollo-client](https://github.com/zeit/next.js/tree/canary/examples/with-apollo) e, então, implementar o _Progressive Web App_ (PWA).
 
-Criamos um diretório `lib` na raíz do projeto
+Criar um diretório `lib` na raíz do projeto:
 
 ```bash
 $ mkdir lib
 ```
 
-No diretório `lib`, criamos um arquivo em `lib/initApollo.js` com o seguinte conteúdo:
+No diretório `lib`, criar o arquivo `initApollo.js` com o seguinte conteúdo:
 
 ```javascript
 import { ApolloLink } from 'apollo-link'
@@ -75,7 +75,7 @@ export default function initApollo (initialState) {
 }
 ```
 
-Em seguida criamos um arquivo em `lib/withData.js` com o seguinte conteúdo:
+Em seguida, criar o arquivo `lib/withData.js` com o seguinte conteúdo:
 
 ```javascript
 import React from 'react'
@@ -158,13 +158,13 @@ export default ComposedComponent => {
 }
 ```
 
-Em seguida, instalamos as dependências do `apollo-client`:
+Em seguida, instale as dependências do `apollo-client`:
 
 ```bash
 $ npm install apollo-client apollo-cache-inmemory apollo-link-http react-apollo graphql-tag graphql isomorphic-unfetch apollo-link
 ```
 
-Alteramos o `pages/index.js` para adaptar o apollo:
+Após finalizada a instalação, altere o arquivo `pages/index.js` para utilizar o Apollo através do `withData`:
 
 ```javascript
 import App from '../components/App'
@@ -181,7 +181,7 @@ export default withData((props) => (
 ))
 ```
 
-Criamos o `pages/products.js` com o seguinte conteúdo:
+Criar o arquivo `pages/products.js` com o seguinte conteúdo:
 
 ```javascript
 import App from '../components/App'
@@ -197,13 +197,13 @@ export default withData((props) => (
 ))
 ```
 
-Na pasta `components` deletamos uns arquivos e criamos alguns:
+Na pasta `components`, deletar os arquivos `Submit.js`, `PostList.js` e `PostUpvoter.js`:
 
 ```bash
 $ rm Submit.js PostList.js PostUpvoter.js
 ```
 
-Em seguida criamos um arquivo em `components/PageList.js` com o seguinte conteúdo:
+Em seguida criar o arquivo `components/PageList.js` com o seguinte conteúdo:
 
 ```javascript
 import Link from 'next/link'
@@ -250,7 +250,7 @@ export default graphql(allPages, {
 })(PageList)
 ```
 
-Depois criamos um arquivo em `components/BlockList.js` com o seguinte conteúdo:
+Depois, criar o arquivo `components/BlockList.js` com o seguinte conteúdo:
 
 ```javascript
 import Link from 'next/link'
@@ -268,7 +268,7 @@ function BlockList ({ data: { loading, error, allBlocks } }) {
             <li key={block.id}>
               <img src={`/static/${block.image}`} alt='products' />
               <h4>{block.title}</h4>
-              <p>Product description</p>
+              <p>Product description.</p>
             </li>
           )}
         </ul>

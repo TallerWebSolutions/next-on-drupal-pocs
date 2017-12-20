@@ -1,16 +1,16 @@
 # Configurações do manifesto
 
-O manifesto do app da Web é um arquivo `JSON` simples que proporciona a capacidade de controlar a aparência do seu aplicativo para o usuário nas áreas onde ele pode ver aplicativos (por exemplo, na tela inicial do celular), direcionar o que o usuário pode acessar e o mais importante como pode acessar.
+O manifesto do _Web App_ é um arquivo `JSON` que permite controlar a aparência do seu aplicativo para o usuário nas áreas onde são apresentados os ícones de aplicativos, direcionar o que o usuário pode acessar e, mais importante, como pode acessar.
 
-Usando o manifesto do app da Web, seu aplicativo pode:
- - Ter uma presença avançada na tela inicial do Android do usuário
- - Ser iniciado no modo de tela inteira no Android sem uma barra de URL
+Usando o manifesto do _Web App_, o aplicativo pode:
+ - Ter um ícone personalizado na tela inicial do dispositivo do usuário
+ - Ser iniciado no modo de tela cheia, sem uma barra de URL
  - Controlar a orientação da tela para proporcionar uma visualização ideal
- - Definir uma experiência de inicialização com "tela de apresentação" e uma cor de tem para o site
+ - Definir uma experiência de inicialização com "tela de apresentação" e uma cor de tema para o site
  - Acompanhar se o aplicativo foi iniciado da tela inicial ou da barra de URL
 
 
-Na raíz do projeto vamos criar o arquivo `manifest.json`.
+Na raíz do projeto, vamos criar o arquivo `manifest.json`.
 
 ```json
 {
@@ -28,13 +28,13 @@ Na raíz do projeto vamos criar o arquivo `manifest.json`.
 }
 ```
 
-# Criando o `service-worker`
+# Criando o _Service Worker_
 
 ## Pré-requisitos
- - Compatibilidade de navegadores: O número de opções de navegador está crescendo. Service workers são compatíveis com Firefox e Opera.
- - HTTPS: Durante o desenvolvimento, você poderá usar service workers por meio do localhost. No entanto, para implantá-lo em um site, será necessário ter o HTTPS instalado no servidor.
+ - Compatibilidade de navegadores: O número de opções de navegadores está crescendo. _Service Workers_ são compatíveis com Firefox e Opera.
+ - HTTPS: Durante o desenvolvimento, você poderá utilizar _Service Workers_ localmente (`localhost`) sem necessidade de certificado SSL. No entanto, para implantá-lo em produção, será necessário ter o SSL configurado.
 
-Criamos um arquivo `generate-sw.js` na raíz do projeto para gerar o `service-worker` da nossa aplicação:
+Criar o arquivo `generate-sw.js`, na raíz do projeto, para gerar o _service worker_ da nossa aplicação:
 
 ```javascript
 const fs = require('fs')
@@ -186,7 +186,7 @@ app()
   })
 ```
 
-> generate-sw - Irá gerar o service-worker.js dentro do build do nextjs no diretório `.next/`
+> generate-sw - Irá gerar o service-worker.js dentro do build do nextjs, no diretório `.next/`
 
 > Event fetch - O que estamos fazendo é:
  - Adicionar um retorno de chamada a .then() na solicitação fetch.
@@ -194,10 +194,11 @@ app()
    - Verificar se a resposta é válida.
    - Verificar se o status da resposta é 200
    - Verificar se o tipo de resposta é basic, o que indica que é uma solicitação de nossa origem. Isso significa que solicitações de ativos de terceiros não são armazenadas no cache.
- - Se todas as verificações forem bem-sucedidas, clonaremos a resposta. O motivo para isso é que, como a resposta é um Stream, o corpo poderá ser consumido apenas uma vez. Como queremos retornar a resposta para uso pelo navegador, bem como passá-la para uso pelo cache, precisamos cloná-la para podermos enviá-la ao navegador e ao cache.
+ - Se todas as verificações forem bem-sucedidas, clonaremos a resposta. O motivo para isso é que, como a resposta é um _Stream_, o corpo (body) poderá ser consumido apenas uma vez. Como queremos retornar a resposta para uso pelo navegador, bem como passá-la para uso pelo cache, precisamos cloná-la para podermos enviá-la ao navegador e ao cache.
+
 > ATENÇÃO - Ao trabalhar com query no next/router o service-worker da um error e automaticamente ja faz um unregister. Pois o nextjs gera uma url como por exemplo: http://localhost:3000/products?param=data
 
-Alteramos o `scripts` do `package.json` ficando assim:
+Alteramos o atributo `scripts` do `package.json` ficando assim:
 
 ```json
 "scripts": {
@@ -209,7 +210,7 @@ Alteramos o `scripts` do `package.json` ficando assim:
 
 # Preparando a aplicação para instalar o `service-worker`
 
-A primeira etapa necessária para fazer com que o aplicativo funcione off-line é registrar um service worker, um script que oferece a funcionalidade off-line sem precisar de uma página da Web aberta ou de interação do usuário.
+A primeira etapa necessária para fazer com que o aplicativo funcione _off-line_ é registrar um _service worker_, um script que oferece a funcionalidade _off-line_ sem precisar de uma página da Web aberta ou de interação do usuário.
 
 Adicionado o diretório `utils` na raíz do projeto e o arquivo `utils/offline-install.js`:
 

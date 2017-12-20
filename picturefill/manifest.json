@@ -1,0 +1,7 @@
+{
+  "name": "Natura POC",
+  "short_name": "NCF POC",
+  "lang": "pt-br",
+  "start_url": "/",
+  "display": "standalone"
+}

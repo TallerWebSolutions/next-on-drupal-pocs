@@ -1,8 +1,8 @@
-# Introdução ao PWA (Progressive Web App)
+# Introdução ao PWA (_Progressive Web App_)
 
 É um termo usado para denotar uma nova metodologia de desenvolvimento de software. Ao contrário dos tradicionais aplicativos, um [Progressive Web App](https://github.com/zeit/next.js#automatic-code-splitting) pode ser visto como uma evolução híbrida entre as páginas da web regulares (ou sites) e um aplicativo móvel. Este novo modelo de aplicação combina recursos oferecidos pelos mais modernos navegadores, com as vantagens de uso de um celular.
 
-![Markdown Course](assets/pwa.png)
+![Progressive Web App - Requesitos e funcionalidades adicionais](assets/pwa.png)
 
 # Caracteristicas
  - Progressivo: para qualquer usuário, independente do browser
