@@ -14,7 +14,11 @@ function PageList ({ data: { loading, error, allPages } }) {
             <li key={page.id}>
               <Link href='/products'>
                 <a>
-                  <img src={`/static/${page.image}`} alt='pages' />
+                  <img srcSet={`/static/${page.image}.jpg 320w,
+                                /static/${page.image}-480w.png 480w,
+                                /static/${page.image}-800w.png 800w`}
+                    sizes="(max-width: 320px) 280px, (max-width: 480px) 440px, 800px"
+                    src={`/static/${page.image}.jpg`} alt='pages' />
                   <p>{page.description}</p>
                 </a>
               </Link>
