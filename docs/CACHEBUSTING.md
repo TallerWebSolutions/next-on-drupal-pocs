@@ -29,3 +29,4 @@ Apesar de ainda utilizada, é importante lembrar que a alternativa de uso de _qu
 
 De modo geral, sendo utilizado o versionamento de nome ou caminho do arquivo não há maiores configurações na utilização de _cache busting_ com uma CDN.
 
+![Cache Busting Sequence Flow](assets/cache-busting_sequence-flow.png)
