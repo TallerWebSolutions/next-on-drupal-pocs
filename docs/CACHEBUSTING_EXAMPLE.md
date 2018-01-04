@@ -1,4 +1,1 @@
-# Como utilizar _Cache Busting_
-
-
-
+# Exemplos de _Cache Busting_

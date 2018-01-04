@@ -9,4 +9,4 @@
 * [Introdução ao PictureFill](docs/PICTUREFILL.md)
   * [Criando um projeto](docs/PICTUREFILL_BASIC.md)
 * [Introdução ao Casche Busting](docs/CACHEBUSTING.md)
-  * [Como utilizar](docs/CACHEBUSTING_EXAMPLE.md)
+  * [Exemplos de Cache Busting ](docs/CACHEBUSTING_EXAMPLE.md)
