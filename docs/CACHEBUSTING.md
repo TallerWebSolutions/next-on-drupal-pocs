@@ -19,8 +19,8 @@ Essa técnica é útil pois permite que seus usuários recebam os arquivos mais 
 
 Algumas das maneiras de implementação recomandadas são:
 
-- Versionamento de nome de arquivo (Ex. style.v2.css)
-- Versionamento de caminho de arquivo (Ex. /v2/style.css)
+- Versionamento de nome de arquivo (Ex. style.ksv-h1ai3sg-u7we.css)
+- Versionamento de caminho de arquivo (Ex. /ksv-h1ai3sg-u7we/style.css)
 - Controle de Cache Tags no cabeçalho da requisição HTTP
 
 Tanto o versionamento do nome como o caminho do arquivo são métodos recomendados de remoção de cache, pois não interferem em nenhum mecanismo de cache e podem ser facilmente atualizados para refletir um arquivo modificado.
