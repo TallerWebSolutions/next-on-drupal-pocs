@@ -8,4 +8,5 @@
   * [Configurando a PWA](docs/APOLLO_PWA.md)
 * [Introdução ao PictureFill](docs/PICTUREFILL.md)
   * [Criando um projeto](docs/PICTUREFILL_BASIC.md)
-* [Introdução a Cache Busting](docs/CACHEBUSTING.md)
+* [Introdução ao Casche Busting](docs/CACHEBUSTING.md)
+  * [Como utilizar](docs/CACHEBUSTING_EXAMPLE.md)
