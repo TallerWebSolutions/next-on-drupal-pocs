@@ -1,6 +1,6 @@
 # Introdução ao _Cache Busting_
 
-Quando um arquivo estático é armazenado em _cache_, ele pode permanecer por longos períodos de tempo antes que ele venha a expirar. Isso garante melhora de performance. No entanto, pode apresentar pontos negativos em uma aplicação web em casos de atualização de _assets_ (arquivos estáticos tais como CSS, Scripts, Imagens, etc). Uma vez que a versão do arquivo em _cache_ é armazenada no navegador dos visitantes, os usuáros podem não conseguir ver novas atuaizações antes da expiração do _cache_. Isso se deve ao fato de que o navegador armazenará uma cópia dos arquivos em _cache_. O _Cache Busting_ propõe uma maneira de controlar sob demanda a utilização e expiração de _cache_ de arquivos estáticos.
+Quando um arquivo estático é armazenado em _cache_, ele pode permanecer por longos períodos de tempo antes que ele venha a expirar. Isso garante melhora considerável de performance. No entanto, pode apresentar pontos negativos em uma aplicação web em casos de atualização de _assets_ (arquivos estáticos tais como CSS, Scripts, Imagens, etc). Uma vez que a versão do arquivo em _cache_ é armazenada no navegador dos visitantes, os usuáros podem não conseguir ver novas atuaizações antes da expiração do _cache_. Isso se deve ao fato de que o navegador armazenará uma cópia dos arquivos em _cache_. O _Cache Busting_ propõe uma maneira de controlar sob demanda a utilização e expiração de _cache_ de arquivos estáticos.
 
 ## O que é _Cache Busting_
 
@@ -14,8 +14,7 @@ O procedimento de _cache busting_ resolve o problema do cache do navegador utili
 
 ## Como e Porque utilizar _Cache Busting_
 
-
-Essa técnica é útil pois permite que seus usuários recebam os arquivos mais recentes sem a necessidade de um _hard refresh_ (`Ctrl+F5`) ou de limpar o cache do navegador. Desde modo, o uso do _cache busting_ é benéfico para que as últimas mudanças possam estar disponíveis em tempo real.
+Essa técnica é útil pois permite que seus usuários recebam os arquivos mais recentes sem a necessidade de um _hard refresh_ (`Ctrl+F5`) ou de limpesa do cache do navegador. Desde modo, o uso do _cache busting_ é benéfico para que as últimas mudanças possam estar disponíveis praticamente em tempo real mantendo todos os ganhos já previsto pelo uso de _Cache_.
 
 Algumas das maneiras de implementação recomandadas são:
 
