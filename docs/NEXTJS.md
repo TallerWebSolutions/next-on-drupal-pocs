@@ -14,7 +14,7 @@ Hoje todos estão familiarizados com o conceito de fadiga de JavaScript. Criar u
 Com o Next.js, habilitamos os desenvolvedores a criar aplicativos da web JavaScript com fluxo de trabalho mais direto. Basta criar alguns arquivos que exportam componentes do React e implantar seu aplicativo.
 
 ## Diagrama de sequencia um cenario sem cache na CDN:
-![Markdown Course](assets/nextjs-sem-cdn.jpg)
+![Sequence Flow - CDN with no cache](assets/nextjs-sem-cdn.jpg)
 
 ## Diagrama de sequencia um cenario com cache na CDN:
-![Markdown Course](assets/nextjs-com-cdn.jpg)
+![Sequence Flow - CDN with cached data](assets/nextjs-com-cdn.jpg)
