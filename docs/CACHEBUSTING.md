@@ -14,7 +14,7 @@ O procedimento de _cache busting_ resolve o problema do cache do navegador utili
 
 ## Como e Porque utilizar _Cache Busting_
 
-Essa técnica é útil pois permite que seus usuários recebam os arquivos mais recentes sem a necessidade de um _hard refresh_ (`Ctrl+F5`) ou de limpesa do cache do navegador. Desde modo, o uso do _cache busting_ é benéfico para que as últimas mudanças possam estar disponíveis praticamente em tempo real, mantendo todos os ganhos já previstos pelo uso de _Cache_ e proporcionado melhor experiência de usuário, aumento de retenção de visitas, especialmente em _mobile_. 
+Essa técnica é útil pois permite que seus usuários recebam os arquivos mais recentes sem a necessidade de um _hard refresh_ (`Ctrl+F5`) ou de limpeza do cache do navegador. Desde modo, o uso do _cache busting_ é benéfico para que as últimas mudanças possam estar disponíveis praticamente em tempo real, mantendo todos os ganhos já previstos pelo uso de _Cache_ e proporcionado melhor experiência de usuário, aumento de retenção de visitas, especialmente em _mobile_. 
 
 Algumas das maneiras de implementação recomandadas são:
 
