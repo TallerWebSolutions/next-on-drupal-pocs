@@ -75,16 +75,18 @@ self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(staticCacheName).then(cache => {
       return cache.addAll([
-        '/',
+				'/',
         '/products',
 				'/about',
+				'/setup',
 				'/static/47881-0.jpg',
 				'/static/49057-0_0.jpg',
 				'/static/77144-0.jpg',
 				'/static/80417-0.jpg',
 				'/static/81017-0.jpg',
 				'/static/82290-0.jpg',
-				'/static/84734-0.jpg'
+				'/static/84734-0.jpg',
+				'/static/setup.png'
       ])
       .then(() => self.skipWaiting())
     })

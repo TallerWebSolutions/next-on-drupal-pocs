@@ -22,7 +22,7 @@ function create (initialState) {
   })
 
   if (process.browser) {
-    const per = persistCache({
+    persistCache({
       cache,
       storage: window.localStorage,
       debug: true
