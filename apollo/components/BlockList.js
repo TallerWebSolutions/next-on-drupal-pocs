@@ -3,13 +3,13 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import ErrorMessage from './ErrorMessage'
 
-function BlockList ({ data: { loading, error, allBlocks } }) {
+function BlockList ({ data: { loading, error, allBlockses } }) {
   if (error) return <ErrorMessage message='Error loading blocks.' />
-  if (allBlocks && allBlocks.length) {
+  if (allBlockses && allBlockses.length) {
     return (
       <section>
         <ul>
-          {allBlocks.map((block, index) =>
+          {allBlockses.map((block, index) =>
             <li key={block.id}>
               <img src={`/static/${block.image}`} alt='products' />
               <h4>{block.title}</h4>
@@ -42,9 +42,9 @@ function BlockList ({ data: { loading, error, allBlocks } }) {
   return <div>Loading</div>
 }
 
-export const blocks = gql`
-  query blocks {
-    allBlocks {
+export const allBlockses = gql`
+  query allBlockses {
+    allBlockses {
       id
       title
       image
@@ -54,7 +54,7 @@ export const blocks = gql`
 
 // The `graphql` wrapper executes a GraphQL query and makes the results
 // available on the `data` prop of the wrapped component (PostList)
-export default graphql(blocks, {
+export default graphql(allBlockses, {
   props: ({ data }) => ({
     data
   })

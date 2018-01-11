@@ -10,13 +10,20 @@ const unregister = () => {
     'serviceWorker' in navigator
   ) {
     navigator.serviceWorker
-      .getRegistration('./').then(function(registrations) {
+      .getRegistration('./').then(registrations => {
         if(typeof registrations !== 'undefined') {
           registrations.unregister().then(function(boolean) {
               console.log('unregistered: ', boolean)
+              if(boolean) {
+                alert('Service Worker desinstalado com sucesso!')
+              }
+              window.localStorage.removeItem('pwa')
+              window.localStorage.removeItem('apollo-cache-persist')
+              alert('Cache liberado com sucesso!')
           })
         }
     })
+
   }
 }
 

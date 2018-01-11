@@ -75,7 +75,7 @@ self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(staticCacheName).then(cache => {
       return cache.addAll([
-				'/',
+        '/',
         '/products',
 				'/about',
 				'/setup',

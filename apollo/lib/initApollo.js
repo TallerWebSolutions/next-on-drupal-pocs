@@ -25,6 +25,7 @@ function create (initialState) {
     persistCache({
       cache,
       storage: window.localStorage,
+      key: 'pwa',
       debug: true
     })
   }

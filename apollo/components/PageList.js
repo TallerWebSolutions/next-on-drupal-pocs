@@ -4,13 +4,13 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import ErrorMessage from './ErrorMessage'
 
-function PageList ({ data: { loading, error, allPages } }) {
+function PageList ({ data: { loading, error, allPageses } }) {
   if (error) return <ErrorMessage message='Error loading pages.' />
-  if (allPages && allPages.length) {
+  if (allPageses && allPageses.length) {
     return (
       <section>
         <ul>
-          {allPages.map((page, index) =>
+          {allPageses.map((page, index) =>
             <li key={page.id}>
               <Link href='/products'>
                 <a>
@@ -54,9 +54,9 @@ function PageList ({ data: { loading, error, allPages } }) {
   return <div>Loading</div>
 }
 
-export const allPages = gql`
-  query allPages {
-    allPages {
+export const allPageses= gql`
+  query allPageses {
+    allPageses {
       id
       description
       image
@@ -66,7 +66,7 @@ export const allPages = gql`
 
 // The `graphql` wrapper executes a GraphQL query and makes the results
 // available on the `data` prop of the wrapped component (PostList)
-export default graphql(allPages, {
+export default graphql(allPageses, {
   props: ({ data }) => ({
     data
   })
