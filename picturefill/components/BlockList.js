@@ -11,11 +11,20 @@ function BlockList ({ data: { loading, error, allBlocks } }) {
         <ul>
           {allBlocks.map((block, index) =>
             <li key={block.id}>
-              <img srcSet={`/static/${block.image}.jpg 320w,
-                            /static/${block.image}-480w.png 480w,
-                            /static/${block.image}-800w.png 800w`}
-                   sizes="(max-width: 320px) 280px, (max-width: 480px) 440px, 800px"
-                   src={`/static/${block.image}.jpg`} alt='products' />
+
+              <picture>
+                <source
+                  media="(max-width: 320px)"
+                  srcSet={`/static/${block.image}.jpg`} />
+                <source
+                   media="(max-width: 480px)"
+                   srcSet={`/static/${block.image}-480w.png`} />
+                <source
+                   media="(max-width: 1000px)"
+                   srcSet={`/static/${block.image}-800w.png`} />
+                <img src={`/static/${block.image}.jpg`} alt='products' />
+              </picture>
+
               <h4>{block.title}</h4>
               <p>Product description. consequat excepturi ullam aliquip. Egestas quidem gravida iaculis, voluptates ratione debitis.</p>
             </li>
@@ -46,8 +55,8 @@ function BlockList ({ data: { loading, error, allBlocks } }) {
   return <div>Loading</div>
 }
 
-export const blocks = gql`
-  query blocks {
+export const allBlocks = gql`
+  query allBlocks {
     allBlocks {
       id
       title
@@ -58,7 +67,7 @@ export const blocks = gql`
 
 // The `graphql` wrapper executes a GraphQL query and makes the results
 // available on the `data` prop of the wrapped component (PostList)
-export default graphql(blocks, {
+export default graphql(allBlocks, {
   props: ({ data }) => ({
     data
   })
