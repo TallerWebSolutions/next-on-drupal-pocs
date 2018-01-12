@@ -5,6 +5,24 @@ const loadJsonFile = require('load-json-file');
 const dotNext = path.resolve(__dirname, './.next')
 const target = path.resolve(__dirname, './.next/service-worker.js')
 
+function mains(app) {
+	return new Promise((resolve, reject) => {
+		app.precaches = app.precaches.concat([
+			'/',
+			'/static/47881-0.jpg',
+			'/static/49057-0_0.jpg',
+			'/static/77144-0.jpg',
+			'/static/80417-0.jpg',
+			'/static/81017-0.jpg',
+			'/static/82290-0.jpg',
+			'/static/84734-0.jpg',
+			'/static/setup.png'
+		])
+
+		resolve(app)
+	})
+}
+
 function bundles(app) {
 	return new Promise((resolve, reject) => {
 		fs.readdir(`${dotNext}/bundles/pages`, (err, files) => {
@@ -69,25 +87,14 @@ function app() {
 
 const swSnippet = (precache) =>
 `
+importScripts('/static/cache-polyfill.js')
+
 var staticCacheName = 'pwa'
 
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(staticCacheName).then(cache => {
-      return cache.addAll([
-        '/',
-        '/products',
-				'/about',
-				'/setup',
-				'/static/47881-0.jpg',
-				'/static/49057-0_0.jpg',
-				'/static/77144-0.jpg',
-				'/static/80417-0.jpg',
-				'/static/81017-0.jpg',
-				'/static/82290-0.jpg',
-				'/static/84734-0.jpg',
-				'/static/setup.png'
-      ])
+      return cache.addAll(${precache})
       .then(() => self.skipWaiting())
     })
   )
@@ -105,40 +112,15 @@ self.addEventListener('fetch', function(event) {
         if (response) {
           return response;
         }
-
-        // IMPORTANT: Clone the request. A request is a stream and
-        // can only be consumed once. Since we are consuming this
-        // once by cache and once by the browser for fetch, we need
-        // to clone the response.
-        var fetchRequest = event.request.clone();
-
-        return fetch(fetchRequest).then(
-          function(response) {
-            // Check if we received a valid response
-            if(!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
-
-            // IMPORTANT: Clone the response. A response is a stream
-            // and because we want the browser to consume the response
-            // as well as the cache consuming the response, we need
-            // to clone it so we have two streams.
-            var responseToCache = response.clone();
-
-            caches.open(staticCacheName)
-              .then(function(cache) {
-                cache.put(event.request, responseToCache);
-              });
-
-            return response;
-          }
-        );
-      })
-    );
+        return fetch(event.request);
+      }
+    )
+  );
 })
 `
 
 app()
+  .then(mains)
 	.then(chunks)
 	.then(bundles)
 	.then(app => {

@@ -13,13 +13,21 @@ const unregister = () => {
       .getRegistration('./').then(registrations => {
         if(typeof registrations !== 'undefined') {
           registrations.unregister().then(function(boolean) {
-              console.log('unregistered: ', boolean)
               if(boolean) {
                 alert('Service Worker desinstalado com sucesso!')
+              }else{
+                alert('Não foi possível desinstalar o service-worker')
               }
               window.localStorage.removeItem('pwa')
               window.localStorage.removeItem('apollo-cache-persist')
               alert('Cache liberado com sucesso!')
+              caches.delete('pwa').then(function(boolean) {
+                  if(boolean) {
+                    alert('Cache Storage liberado com sucesso!')
+                  }else{
+                    alert('Não foi possível liberar cache.')
+                  }
+              })
           })
         }
     })
