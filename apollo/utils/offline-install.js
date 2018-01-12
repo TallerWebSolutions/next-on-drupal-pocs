@@ -1,35 +1,12 @@
-if (
-  process.env.NODE_ENV === 'production' &&
-  typeof window !== 'undefined' &&
-  'serviceWorker' in navigator
-) {
-
-  navigator.serviceWorker
-    .register('/service-worker.js', {
-      scope: './',
-      insecure: true
-    })
-    .then(reg => {
-      reg.onupdatefound = () => {
-        const installingWorker = reg.installing
-
-        installingWorker.onstatechange = () => {
-          switch (installingWorker.state) {
-            case 'installed':
-              if (navigator.serviceWorker.controller) {
-                console.log('New or updated content is available.')
-              } else {
-                console.log('Content is now available offline!')
-              }
-              break
-            case 'redundant':
-              console.log('The installing serviceWorker became redundant.')
-              break
-          }
-        }
-      }
-    })
-    .catch(e => {
-      console.error('Error during service worker registration:', e)
-    })
+if(typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+  alert('Aguarde a instalação do pwa')
+  navigator.serviceWorker.register('/service-worker.js', {scope: './', insecure: true}).then(function(registration) {
+    // Registration was successful
+    alert('ServiceWorker registration successful')
+    console.log('ServiceWorker registration successful');
+  }).catch(function(err) {
+    // registration failed :(
+    console.log('ServiceWorker registration failed: ', err);
+    alert(err)
+  });
 }
