@@ -12,6 +12,15 @@ app.prepare()
     const server = express()
 
     server.use(cors())
+
+    server.use((req, res, next) => {
+      if (req.header('x-forwarded-proto') !== 'https') {
+        res.redirect(`https://${req.header('host')}${req.url}`)
+      }else{
+        next()
+      }
+    })
+
     // serve service worker
     server.get('/service-worker.js', (req, res) => res.sendFile(path.resolve('./.next/service-worker.js')))
 
