@@ -275,3 +275,17 @@ export default withData((props) => (
   </App>
 ))
 ```
+
+# Modelos de celulares que foram testados:
+
+```bash
+j7 prime
+lg k10
+lenovo p2
+j1 2016
+motox force
+asus zenfone
+moto x 2
+s3
+lenovo k10a40
+```
