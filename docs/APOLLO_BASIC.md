@@ -167,17 +167,32 @@ $ npm install apollo-client apollo-cache-inmemory apollo-link-http react-apollo 
 Após finalizada a instalação, altere o arquivo `pages/index.js` para utilizar o Apollo através do `withData`:
 
 ```javascript
+import '../utils/offline-install'
+import Head from 'next/head'
 import App from '../components/App'
 import Header from '../components/Header'
 import PageList from '../components/PageList'
-
 import withData from '../lib/withData'
 
 export default withData((props) => (
-  <App>
-    <Header pathname={props.url.pathname} />
-    <PageList />
-  </App>
+  <div>
+    <Head>
+      <link rel="manifest" href="/static/manifest.json" />
+
+      <meta httpEquiv='x-ua-compatible' content='ie=edge' />
+
+      <meta name='viewport' content='width=device-width, initial-scale=1' />
+      <meta charset="utf-8" />
+      <meta name="theme-color" content="#000000" />
+      <link rel="icon" href="/static/favicon.ico" />
+
+      <title>PWA with Apollo</title>
+    </Head>
+      <Header pathname={props.url.pathname} />
+      <App>
+      <PageList />
+    </App>
+  </div>
 ))
 ```
 
