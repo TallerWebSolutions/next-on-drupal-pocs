@@ -9,6 +9,9 @@ function mains(app) {
 	return new Promise((resolve, reject) => {
 		app.precaches = app.precaches.concat([
 			'/',
+			'/products',
+			'/about',
+			'/setup',			
 			'/static/47881-0.jpg',
 			'/static/49057-0_0.jpg',
 			'/static/77144-0.jpg',
