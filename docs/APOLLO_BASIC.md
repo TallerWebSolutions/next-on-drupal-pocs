@@ -16,6 +16,7 @@ import { RetryLink } from 'apollo-link-retry'
 import { ApolloClient } from 'apollo-client'
 import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
+//import { persistCache } from 'apollo-cache-persist'
 import { persistCache } from 'apollo-cache-persist'
 import fetch from 'isomorphic-unfetch'
 
@@ -35,9 +36,10 @@ function create (initialState) {
   })
 
   if (process.browser) {
-    const per = persistCache({
+    persistCache({
       cache,
       storage: window.localStorage,
+      key: 'pwa',
       debug: true
     })
   }
@@ -73,6 +75,7 @@ export default function initApollo (initialState) {
 
   return apolloClient
 }
+
 ```
 
 Em seguida, criar o arquivo `lib/withData.js` com o seguinte conteúdo:
@@ -168,31 +171,16 @@ Após finalizada a instalação, altere o arquivo `pages/index.js` para utilizar
 
 ```javascript
 import '../utils/offline-install'
-import Head from 'next/head'
 import App from '../components/App'
 import Header from '../components/Header'
 import PageList from '../components/PageList'
 import withData from '../lib/withData'
 
 export default withData((props) => (
-  <div>
-    <Head>
-      <link rel="manifest" href="/static/manifest.json" />
-
-      <meta httpEquiv='x-ua-compatible' content='ie=edge' />
-
-      <meta name='viewport' content='width=device-width, initial-scale=1' />
-      <meta charset="utf-8" />
-      <meta name="theme-color" content="#000000" />
-      <link rel="icon" href="/static/favicon.ico" />
-
-      <title>PWA with Apollo</title>
-    </Head>
-      <Header pathname={props.url.pathname} />
-      <App>
-      <PageList />
-    </App>
-  </div>
+  <App>
+    <Header pathname={props.url.pathname} />
+    <PageList />
+  </App>
 ))
 ```
 
@@ -207,7 +195,7 @@ import withData from '../lib/withData'
 export default withData((props) => (
   <App>
     <Header pathname={props.url.pathname} />
-    <BlockList />
+    <BlockList pageId={props.url.query.pageId} />
   </App>
 ))
 ```
@@ -221,44 +209,75 @@ $ rm Submit.js PostList.js PostUpvoter.js
 Em seguida criar o arquivo `components/PageList.js` com o seguinte conteúdo:
 
 ```javascript
+import Router from 'next/router'
 import Link from 'next/link'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import ErrorMessage from './ErrorMessage'
 
-function PageList ({ data: { loading, error, allPages } }) {
+function PageList ({ data: { loading, error, allPageses } }) {
   if (error) return <ErrorMessage message='Error loading pages.' />
-  if (allPages && allPages.length) {
+  if (allPageses && allPageses.length) {
     return (
       <section>
         <ul>
-          {allPages.map((page, index) =>
+          {allPageses.map((page, index) =>
             <li key={page.id}>
-              <div>
-                <span>{index + 1}. </span>
-                <Link href="/products">
-                  <a>{page.description}</a>
-                </Link>
-              </div>
+              <Link href='/products'>
+                <a>
+                  <img src={`/static/${page.image}`} alt='pages' />
+                  <p>{page.description}</p>
+                </a>
+              </Link>
             </li>
           )}
         </ul>
+        <style jsx>{`
+          ul {
+            padding-left: 0px;
+            list-style-type: none;
+            margin-top: 10px;
+          }
+          ul img {
+            width: 100%;
+            height: auto;
+            display: inline-block;
+            margin: 0 20px 10px 0;
+          }
+          li {
+            padding-right: 20px;
+            border-left: none;
+            border-right: none;
+            display: inline-block;
+          }
+          a {
+            font-size: 14px;
+            margin-right: 15px;
+            text-decoration: none;
+            color: #333;
+            text-align: center;
+            text-transform: uppercase;
+          }
+        `}</style>
       </section>
     )
   }
   return <div>Loading</div>
 }
 
-export const allPages = gql`
-  query allPages {
-    allPages {
+export const allPageses= gql`
+  query allPageses {
+    allPageses {
       id
       description
+      image
     }
   }
 `
 
-export default graphql(allPages, {
+// The `graphql` wrapper executes a GraphQL query and makes the results
+// available on the `data` prop of the wrapped component (PostList)
+export default graphql(allPageses, {
   props: ({ data }) => ({
     data
   })
@@ -273,17 +292,17 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import ErrorMessage from './ErrorMessage'
 
-function BlockList ({ data: { loading, error, allBlocks } }) {
+function BlockList ({ data: { loading, error, allBlockses } }) {
   if (error) return <ErrorMessage message='Error loading blocks.' />
-  if (allBlocks && allBlocks.length) {
+  if (allBlockses && allBlockses.length) {
     return (
       <section>
         <ul>
-          {allBlocks.map((block, index) =>
+          {allBlockses.map((block, index) =>
             <li key={block.id}>
               <img src={`/static/${block.image}`} alt='products' />
               <h4>{block.title}</h4>
-              <p>Product description.</p>
+              <p>Product description. consequat excepturi ullam aliquip. Egestas quidem gravida iaculis, voluptates ratione debitis.</p>
             </li>
           )}
         </ul>
@@ -312,9 +331,9 @@ function BlockList ({ data: { loading, error, allBlocks } }) {
   return <div>Loading</div>
 }
 
-export const blocks = gql`
-  query blocks {
-    allBlocks {
+export const allBlockses = gql`
+  query allBlockses {
+    allBlockses {
       id
       title
       image
@@ -324,7 +343,7 @@ export const blocks = gql`
 
 // The `graphql` wrapper executes a GraphQL query and makes the results
 // available on the `data` prop of the wrapped component (PostList)
-export default graphql(blocks, {
+export default graphql(allBlockses, {
   props: ({ data }) => ({
     data
   })

@@ -215,46 +215,14 @@ A primeira etapa necessária para fazer com que o aplicativo funcione _off-line_
 Adicionado o diretório `utils` na raíz do projeto e o arquivo `utils/offline-install.js`:
 
 ```javascript
-if (
-  process.env.NODE_ENV === 'production' &&
-  typeof window !== 'undefined' &&
-  'serviceWorker' in navigator
-) {
-  navigator.serviceWorker
-    .getRegistration('./').then(function(registrations) {
-      console.log('agora', registrations)
-        registrations.unregister().then(function(boolean) {
-            console.log(boolean)
-        })
-  })
-  navigator.serviceWorker
-    .register('/service-worker.js', {
-      scope: './',
-      insecure: true
-    })
-    .then(reg => {
-      reg.onupdatefound = () => {
-        const installingWorker = reg.installing
-
-        installingWorker.onstatechange = () => {
-          switch (installingWorker.state) {
-            case 'installed':
-              if (navigator.serviceWorker.controller) {
-                console.log('New or updated content is available.')
-              } else {
-                console.log('Content is now available offline!')
-              }
-              break
-            case 'redundant':
-              console.log('The installing serviceWorker became redundant.')
-              break
-          }
-        }
-      }
-    })
-    .catch(e => {
-      console.error('Error during service worker registration:', e)
-    })
+if(typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js', {scope: './', insecure: true}).then(function(registration) {
+    // Registration was successful
+    console.log('ServiceWorker registration successful!', registration);
+  }).catch(function(err) {
+    // registration failed :(
+    alert('ServiceWorker registration failed: ', err);
+  });
 }
 ```
 
