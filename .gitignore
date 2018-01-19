@@ -5,3 +5,18 @@ node_modules
 _book
 .DS_Store
 .vscode
+
+# Ignore non-custom parts of Drupal.
+/drupal/core
+/drupal/modules/contrib
+/drupal/profiles/contrib
+/drupal/themes/contrib
+/drupal/sites/default/files
+/drupal/sites/simpletest
+
+
+# Ignore local settings.
+/drupal/sites/default/settings.local.php
+
+# Ignore dependencies.
+vendor/
