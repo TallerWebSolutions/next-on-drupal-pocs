@@ -1,0 +1,75 @@
+{
+    "name": "natura-poc",
+    "description": "Website for 'Natura POC' initiative.",
+    "type": "project",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Henrique Recedive",
+            "role": "Web Developer"
+        },
+        {
+            "name": "Willian Dias Tamagi",
+            "role": "Web Developer"
+        }
+    ],
+    "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    },
+    "require": {
+        "composer/installers": "^1.2",
+        "drupal-composer/drupal-scaffold": "^2.2",
+        "cweagans/composer-patches": "^1.6",
+        "drupal/core": "~8.4",
+        "drupal/console": "^1.0.2",
+        "drush/drush": "^9.0",
+        "drupal/paragraphs": "^1.2",
+        "drupal/graphql": "^3.0@beta"
+    },
+    "require-dev": {
+        "mikey179/vfsStream": "~1.2",
+        "phpunit/phpunit": ">=4.8.28 <5",
+        "symfony/css-selector": "~2.8|~3.0",
+        "drupal/devel": "^1.0@RC"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ]
+    },
+    "scripts": {
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "pre-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "pre-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "post-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "post-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ]
+    },
+    "extra": {
+        "installer-paths": {
+            "drupal/core": ["type:drupal-core"],
+            "drupal/modules/contrib/{$name}": ["type:drupal-module"],
+            "drupal/libraries/{$name}": ["type:drupal-library"],
+            "drupal/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "drupal/themes/contrib/{$name}": ["type:drupal-theme"],
+            "drush/contrib/{$name}": ["type:drupal-drush"]
+        },
+
+        "patches": {}
+    }
+}
