@@ -1,0 +1,26 @@
+uuid: 298f1b0a-9ad2-4292-85b3-14072006f1ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.paragraph.field_text
+    - paragraphs.paragraphs_type.paragraph
+  module:
+    - text
+id: paragraph.paragraph.default
+targetEntityType: paragraph
+bundle: paragraph
+mode: default
+content:
+  field_text:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

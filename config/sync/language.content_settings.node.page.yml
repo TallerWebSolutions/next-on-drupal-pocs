@@ -1,0 +1,16 @@
+uuid: f1ef30e8-05c2-441b-b612-3e49b516e4ee
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - node.type.page
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+id: node.page
+target_entity_type_id: node
+target_bundle: page
+default_langcode: site_default
+language_alterable: false

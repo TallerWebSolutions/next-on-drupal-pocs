@@ -1,0 +1,16 @@
+uuid: dac69c06-f18a-4f18-a64d-282dd8b51f6d
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - node.type.article
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.article
+target_entity_type_id: node
+target_bundle: article
+default_langcode: site_default
+language_alterable: true

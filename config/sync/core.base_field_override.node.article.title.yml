@@ -1,0 +1,18 @@
+uuid: 9747feb0-06dc-460e-af52-488ac8432bf1
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - node.type.article
+id: node.article.title
+field_name: title
+entity_type: node
+bundle: article
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
