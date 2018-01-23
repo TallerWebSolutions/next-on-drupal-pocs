@@ -1,0 +1,5 @@
+name: poc_graphql_translations
+type: module
+description: GraphQL translations features to POC project.
+core: 8.x
+package: POC
