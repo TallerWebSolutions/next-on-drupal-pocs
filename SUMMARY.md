@@ -10,3 +10,4 @@
   * [Criando um projeto](docs/PICTUREFILL_BASIC.md)
 * [Introdução ao Cache Busting](docs/CACHEBUSTING.md)
   * [Exemplos de Cache Busting ](docs/CACHEBUSTING_EXAMPLE.md)
+* [Internacionalização com Drupal e Nextjs](docs/INTERNACIONALIZACAO.md)
