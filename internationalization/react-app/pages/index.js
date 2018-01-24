@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import { compose, whithContext, withProps, withHandlers, lifecycle } from 'recompose'
 import { translate } from 'react-i18next'
 import i18n from '../i18n'
+import withData from 'app/lib/withData'
+
+import Container from 'app/components/container'
 
 // import Translate, { withTranslate } from '../components/translate'
 // import { withTranslate } from '../components/translate1'
@@ -46,19 +49,18 @@ import i18n from '../i18n'
 //   </div>
 // )
 
-const Home = ({ t, initialI18nStore }) => (
+const Home = () => (
   <div>
-    {t('welcome')}
+    <Container />
   </div>
 )
 
-const Extended = translate(['home'], { i18n, wait: process.browser })(Home)
-
-Extended.getInitialProps = async ({ req }) => {
-  if (req && !process.browser) return i18n.getInitialProps(req, ['home'])
-  console.log('nooo')
-  return {}
-}
+// const Extended = translate(['home'], { i18n, wait: process.browser })(Home)
+//
+// Extended.getInitialProps = async ({ req }) => {
+//   if (req && !process.browser) return i18n.getInitialProps(req, ['home'])
+//   return {}
+// }
 
 // export default compose(
 //   translate(['home'], { i18n, wait: process.browser }),
@@ -74,4 +76,4 @@ Extended.getInitialProps = async ({ req }) => {
 // )
 // (Home)
 
-export default Extended
+export default withData(Home)
