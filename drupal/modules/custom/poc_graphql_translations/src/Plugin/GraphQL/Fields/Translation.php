@@ -8,7 +8,7 @@ use Youshido\GraphQL\Execution\ResolveInfo;
 /**
  *
  * @GraphQLField(
- *   id = "translation",
+ *   id = "translation.translation",
  *   secure = true,
  *   name = "translation",
  *   parents = {"Translation"},

@@ -8,41 +8,37 @@ use Youshido\GraphQL\Execution\ResolveInfo;
 use Drupal\Core\DependencyInjection\DependencySerializationTrait;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\locale\StringDatabaseStorage;
+use Drupal\locale\LocaleTranslation;
 
 /**
  *
  * @GraphQLField(
- *   id = "translations",
+ *   id = "translation",
  *   secure = true,
- *   name = "translations",
- *   type = "Translation",
- *   multi = true,
+ *   name = "translation",
+ *   type = "String",
  *   arguments = {
- *     "language" = {
- *       "type" = "String",
- *       "nullable" = true
+ *     "langcode" = {
+ *       "type" = "String"
+ *     },
+ *     "string" = {
+ *       "type" = "String"
  *     },
  *     "context" = {
- *       "type" = "String",
- *       "nullable" = true
- *     },
- *     "translated" = {
- *       "type" = "Boolean",
- *       "nullable" = true,
- *       "default" = true
+ *       "type" = "String"
  *     }
  *   }
  * )
  */
-class Translations extends FieldPluginBase implements ContainerFactoryPluginInterface {
+class RootTranslation extends FieldPluginBase implements ContainerFactoryPluginInterface {
   use DependencySerializationTrait;
+
   /**
    * The locale translation.
    *
-   * @var \Drupal\locale\StringDatabaseStorage
+   * @var \Drupal\locale\LocaleTranslation
    */
-  protected $stringDatabaseStorage;
+  protected $localeTranslation;
 
   /**
   * {@inheritdoc}
@@ -50,10 +46,11 @@ class Translations extends FieldPluginBase implements ContainerFactoryPluginInte
   public function __construct(
     array $configuration,
     $pluginId,
+
     $pluginDefinition,
-    StringDatabaseStorage $stringDatabaseStorage
+    LocaleTranslation $localeTranslation
   ) {
-    $this->stringDatabaseStorage = $stringDatabaseStorage;
+    $this->localeTranslation = $localeTranslation;
     parent::__construct($configuration, $pluginId, $pluginDefinition);
   }
 
@@ -70,7 +67,7 @@ class Translations extends FieldPluginBase implements ContainerFactoryPluginInte
       $configuration,
       $pluginId,
       $pluginDefinition,
-      $container->get('locale.storage')
+      $container->get('string_translator.locale.lookup')
     );
   }
 
@@ -78,16 +75,6 @@ class Translations extends FieldPluginBase implements ContainerFactoryPluginInte
    * {@inheritdoc}
    */
   public function resolveValues($id, array $args, ResolveInfo $info) {
-    $conditions = [
-      'context' => $args['context'],
-      'language' => $args['language'],
-      'translated' => $args['translated']
-    ];
-
-    $stringInterfaces = $this->stringDatabaseStorage->getTranslations($conditions, []);
-
-    foreach ($stringInterfaces as $stringInterface) {
-      yield $stringInterface->getValues(['language', 'source', 'translation']);
-    }
+    yield $this->localeTranslation->getStringTranslation($args['langcode'], $args['string'], $args['context']);
   }
 }

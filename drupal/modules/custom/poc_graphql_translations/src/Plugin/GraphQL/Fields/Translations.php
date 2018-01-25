@@ -78,16 +78,10 @@ class Translations extends FieldPluginBase implements ContainerFactoryPluginInte
    * {@inheritdoc}
    */
   public function resolveValues($id, array $args, ResolveInfo $info) {
-    $conditions = [
-      'context' => $args['context'],
-      'language' => $args['language'],
-      'translated' => $args['translated']
-    ];
-
-    $stringInterfaces = $this->stringDatabaseStorage->getTranslations($conditions, []);
+    $stringInterfaces = $this->stringDatabaseStorage->getTranslations($args, []);
 
     foreach ($stringInterfaces as $stringInterface) {
-      yield $stringInterface->getValues(['language', 'source', 'translation']);
+      yield $stringInterface->getValues(['language', 'source', 'translation', 'context']);
     }
   }
 }
