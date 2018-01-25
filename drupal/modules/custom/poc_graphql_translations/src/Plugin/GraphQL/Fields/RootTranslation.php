@@ -46,7 +46,6 @@ class RootTranslation extends FieldPluginBase implements ContainerFactoryPluginI
   public function __construct(
     array $configuration,
     $pluginId,
-
     $pluginDefinition,
     LocaleTranslation $localeTranslation
   ) {
@@ -74,7 +73,7 @@ class RootTranslation extends FieldPluginBase implements ContainerFactoryPluginI
   /**
    * {@inheritdoc}
    */
-  public function resolveValues($id, array $args, ResolveInfo $info) {
-    yield $this->localeTranslation->getStringTranslation($args['langcode'], $args['string'], $args['context']);
+  public function resolveValues($root, array $args, ResolveInfo $info) {
+    yield call_user_func_array([$this->localeTranslation, 'getStringTranslation'], $args);
   }
 }

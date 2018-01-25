@@ -8,20 +8,20 @@ use Youshido\GraphQL\Execution\ResolveInfo;
 /**
  *
  * @GraphQLField(
- *   id = "translation.context",
+ *   id = "translation.translation",
  *   secure = true,
- *   name = "context",
+ *   name = "translation",
  *   parents = {"Translation"},
  *   type = "String"
  * )
  */
-class Context extends FieldPluginBase {
+class TranslationTranslation extends FieldPluginBase {
 
   /**
    * {@inheritdoc}
    */
   public function resolveValues($value, array $args, ResolveInfo $info) {
-    yield $value['context'];
+    yield $value['translation'];
   }
 
 }
