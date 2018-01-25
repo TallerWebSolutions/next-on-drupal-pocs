@@ -11,3 +11,6 @@
 * [Introdução ao Cache Busting](docs/CACHEBUSTING.md)
   * [Exemplos de Cache Busting ](docs/CACHEBUSTING_EXAMPLE.md)
 * [Internacionalização com Drupal e Nextjs](docs/INTERNACIONALIZACAO.md)
+  * [Tradução de conteúdos](docs/INTERNACIONALIZACAO_CONTENT_TRANSLATION.md)
+  * [Tradução de interface](docs/INTERNACIONALIZACAO_INTERFACE_TRANSLATION.md)
+  * [Negociação de idioma](docs/INTERNACIONALIZACAO_LANGUAGE_NEGOTIATION.md)
