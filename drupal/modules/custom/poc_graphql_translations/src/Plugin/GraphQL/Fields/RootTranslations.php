@@ -35,7 +35,7 @@ use Drupal\locale\StringDatabaseStorage;
  *   }
  * )
  */
-class Translations extends FieldPluginBase implements ContainerFactoryPluginInterface {
+class RootTranslations extends FieldPluginBase implements ContainerFactoryPluginInterface {
   use DependencySerializationTrait;
   /**
    * The locale translation.
