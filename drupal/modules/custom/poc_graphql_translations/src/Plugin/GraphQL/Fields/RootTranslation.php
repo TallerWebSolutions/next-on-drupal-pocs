@@ -19,7 +19,9 @@ use Drupal\locale\LocaleTranslation;
  *   type = "String",
  *   arguments = {
  *     "langcode" = {
- *       "type" = "String"
+ *       "type" = "String",
+ *       "nullable" = true,
+ *       "default" = ""
  *     },
  *     "string" = {
  *       "type" = "String"
