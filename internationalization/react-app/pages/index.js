@@ -13,6 +13,7 @@ const i18nOptions = {
   whitelist: ['en', 'pt-BR'], // @TODO: list languages from Drupal?
   ns: [], // do not fetch any namespace unless required.
   load: 'currentOnly', // avoid 'en' when 'en-US' due to need of fetching.
+  nsSeparator: '||',
 
   saveMissing: true, // enables whole missing key handling.
   saveMissingTo: 'current', // what language to save a missing key into.
@@ -149,15 +150,22 @@ const withI18n = ComposedComponent => class WithI18n extends React.Component {
   }
 }
 
-const HelloWorld = ({ t = v => v }) => (
-  <div>
-    <p>AQUI: { t('string teste') }</p>
-    <p>AQUI: { t('context a') }</p>
-    <p>Outra: { t('b:opa') }</p>
-  </div>
-)
+const HelloWorld = ({ t = v => v }) => {
+  const count1 = 1
+  const count5 = 5
 
-const TranslatedHelloWorld = translate('a')(HelloWorld)
+  return (
+    <div>
+      <h1>POC - { t('Internationalization') }</h1>
+      <p>{ t('Welcome to the poc of internationalization, here we show some stuffs of this incredible feature. This is a interface translated using the i18next framework.') }</p>
+      <p>{ t('Plurals') }</p>
+      <p>{ count1 > 1 ? count1 + ' ' + t('oranges') : t('1 orange') }</p>
+      <p>{ count5 > 1 ? count5 + ' ' + t('oranges') : t('1 orange') }</p>
+    </div>
+  )
+}
+
+const TranslatedHelloWorld = translate('')(HelloWorld)
 
 const Home = () => (
   <div>
