@@ -76,6 +76,6 @@ class RootTranslation extends FieldPluginBase implements ContainerFactoryPluginI
    * {@inheritdoc}
    */
   public function resolveValues($root, array $args, ResolveInfo $info) {
-    yield call_user_func_array([$this->localeTranslation, 'getStringTranslation'], $args);
+    yield call_user_func_array([$this->localeTranslation, 'getStringTranslation'], $args) ?: NULL;
   }
 }
