@@ -25,7 +25,9 @@ use Drupal\locale\LocaleTranslation;
  *       "type" = "String"
  *     },
  *     "context" = {
- *       "type" = "String"
+ *       "type" = "String",
+ *       "nullable" = true,
+ *       "default" = ""
  *     }
  *   }
  * )
