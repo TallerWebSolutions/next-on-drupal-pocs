@@ -10,7 +10,7 @@ import initApollo from '../src/lib/initApollo'
 const apollo = initApollo({})
 
 const i18nOptions = {
-  // fallbackLng: 'en',
+  fallbackLng: 'en',
   debug: false,
   whitelist: ['en', 'pt-BR'], // @TODO: list languages from Drupal?
   ns: [], // do not fetch any namespace unless required.
@@ -126,7 +126,7 @@ const withI18n = ComposedComponent => class WithI18n extends React.Component {
 
 const HelloWorld = ({ t = v => v }) => (
   <div>
-    AQUI: { t('string teste ') }
+    AQUI: { t('string teste') }
   </div>
 )
 
