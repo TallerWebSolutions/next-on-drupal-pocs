@@ -1,0 +1,9 @@
+node_modules/
+node_modules
+local_modules
+temp/
+.next
+coverage
+showcase
+storybook-static/
+temp/
