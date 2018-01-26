@@ -9,7 +9,7 @@ import { createHttpLink } from 'apollo-link-http'
 // import { BatchHttpLink } from 'apollo-link-batch-http'
 // import { persistCache } from 'apollo-cache-persist'
 
-import { isDevelopment, isClient, isServer, getGraphqlHost } from 'app/lib/func'
+import { isDevelopment, isClient, isServer } from 'app/lib/func'
 import { extractCacheTags } from 'app/lib/cacheTagsAfterware'
 
 const GRAPHQL_HOST = 'http://localhost/graphql'
