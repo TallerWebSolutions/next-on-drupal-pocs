@@ -7,15 +7,15 @@ import { I18nextProvider, translate } from 'react-i18next'
 import gql from 'graphql-tag'
 import initApollo from '../src/lib/initApollo'
 
-const apollo = initApollo({})
-
 const i18nOptions = {
   fallbackLng: 'en',
   debug: false,
   whitelist: ['en', 'pt-BR'], // @TODO: list languages from Drupal?
   ns: [], // do not fetch any namespace unless required.
   load: 'currentOnly', // avoid 'en' when 'en-US' due to need of fetching.
-  saveMissing: true,
+
+  saveMissing: true, // enables whole missing key handling.
+  saveMissingTo: 'current', // what language to save a missing key into.
 }
 
 class DrupalGraphQLI18nextPlugin {
@@ -53,7 +53,7 @@ class DrupalGraphQLI18nextPlugin {
   init (i18n) {
     /**
      * Set backend plugin.
-     * @TODO: is there any way a i18n plugin can be both 3rdParty and Backend?
+     * @TODO: is there any way a i18next plugin can be both 3rdParty and Backend?
      */
     i18n.services.backendConnector.backend = {
       type: 'backend',
@@ -62,12 +62,12 @@ class DrupalGraphQLI18nextPlugin {
       * Callback for reading a language on a namespace.
       */
       read: (language, context, callback) => {
+        context = context === 'translation' ? '' : context
+
         const options = {
           query: this.queries.translations,
           variables: { language, context }
         }
-
-        console.log('reading')
 
         const query = this.client.query(options)
 
@@ -87,15 +87,36 @@ class DrupalGraphQLI18nextPlugin {
     /**
      * Listen for missing keys to fetch isolated strings.
      */
-    i18n.on('missingKey', (e, ...args) => {
-      // debugger
-      console.log('EVENt', e, args)
-      // instance.options.parseMissingKeyHandler = () => {
-      //     return options.missingKeyValue;
-      // };
-      //
-      // const languages = typeof lngs === 'string' ? [ lngs ] : lngs;
-      // languages.map(l => requestKey(key, l, ns));
+    i18n.on('missingKey', (language, namespace, key) => {
+      // when language is not defined, it should use default key.
+      if (!language) return
+
+      const context = namespace === 'translation' ? '' : namespace
+
+      const options = {
+        query: this.queries.translation,
+        variables: {
+          langcode: language,
+          string: key,
+          context,
+        }
+      }
+
+      // @TODO: only perform a language/namespace query if the group is not
+      // being currently requested.
+      const query = this.client.query(options)
+
+      // Assign error handling.
+      // query.catch(() => {}) // @TODO: fails even when succeeds?
+
+      // Add result to store.
+      query.then(response => {
+        if (response.data.translation) {
+          i18n.addResources(language, namespace, {
+            [key]: response.data.translation
+          })
+        }
+      })
     })
   }
 }
@@ -106,6 +127,8 @@ class DrupalGraphQLI18nextPlugin {
 const withI18n = ComposedComponent => class WithI18n extends React.Component {
   constructor (props) {
     super(props)
+
+    const apollo = initApollo({})
 
     // Initialize server/client based language-detection solutions.
     if (process.browser) {
@@ -129,7 +152,8 @@ const withI18n = ComposedComponent => class WithI18n extends React.Component {
 const HelloWorld = ({ t = v => v }) => (
   <div>
     <p>AQUI: { t('string teste') }</p>
-    <p>Outra: { t('b:string teste') }</p>
+    <p>AQUI: { t('context a') }</p>
+    <p>Outra: { t('b:opa') }</p>
   </div>
 )
 
