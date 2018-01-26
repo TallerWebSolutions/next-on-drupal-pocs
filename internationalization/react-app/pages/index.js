@@ -15,6 +15,7 @@ const i18nOptions = {
   whitelist: ['en', 'pt-BR'], // @TODO: list languages from Drupal?
   ns: [], // do not fetch any namespace unless required.
   load: 'currentOnly', // avoid 'en' when 'en-US' due to need of fetching.
+  saveMissing: true,
 }
 
 class DrupalGraphQLI18nextPlugin {
@@ -86,7 +87,8 @@ class DrupalGraphQLI18nextPlugin {
     /**
      * Listen for missing keys to fetch isolated strings.
      */
-    i18n.on('*', (e, ...args) => {
+    i18n.on('missingKey', (e, ...args) => {
+      // debugger
       console.log('EVENt', e, args)
       // instance.options.parseMissingKeyHandler = () => {
       //     return options.missingKeyValue;
@@ -126,7 +128,8 @@ const withI18n = ComposedComponent => class WithI18n extends React.Component {
 
 const HelloWorld = ({ t = v => v }) => (
   <div>
-    AQUI: { t('string teste') }
+    <p>AQUI: { t('string teste') }</p>
+    <p>Outra: { t('b:string teste') }</p>
   </div>
 )
 
