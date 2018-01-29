@@ -281,3 +281,7 @@ export default compose(
   withI18n
 )(Home)
 ```
+
+Links úteis:
+[i18next documentation](https://www.i18next.com/)
+[react-i18next documentation](https://react.i18next.com/)
