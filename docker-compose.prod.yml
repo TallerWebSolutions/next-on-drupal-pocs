@@ -23,6 +23,48 @@ services:
       - 80
     environment:
       - VIRTUAL_HOST=natura-poc-book.dropit.in
+
+  # This container is never builded - it's used only
+  # for reusing configuration,
+  drupal_meta:
+    image: busybox # Necessary to make this container valid.
+    environment:
+      - MYSQL_USER=drupal
+      - MYSQL_DATABASE=drupal
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+
+  drupal:
+    extends: drupal_meta
+    image: natura-poc-drupal # Only needed to override "drupal_meta" image.
+    build:
+      context: ./docker/
+      args:
+        USER_ID: "$USER_ID"
+        GROUP_ID: "$GROUP_ID"
+    hostname: drupal
+    ports:
+      - "80:80"
+    cap_add:
+      - ALL
+    links:
+      - drupal_database:database-host
+    volumes:
+        # 1 - Use ssh config from host.
+        # 2 - Use git config from host.
+        # 3 - Place drupal files.
+      - $HOME/.ssh:/drupal/.ssh
+      - $HOME/.gitconfig:/drupal/.gitconfig
+      - $PWD:/drupal/drupal
+
+  drupal_database:
+    extends: drupal_meta
+    image: mysql:5.6
+    container_name: natura-poc-db
+    volumes:
+      # Persist database outside container.
+      - $PWD/.mysql/:/var/lib/mysql
+
 networks:
   default:
     external:
