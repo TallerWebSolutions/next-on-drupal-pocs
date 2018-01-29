@@ -11,4 +11,4 @@ rsync -avzhe "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" \
 
 # Setup Docker services
 ssh -o StrictHostKeyChecking=no taller-docker@162.243.5.100 \
-    'cd /home/taller-docker/natura-poc.prod; docker-compose -f docker-compose.prod.yml build; docker-compose -f docker-compose.prod.yml up -d'
+    'cd /home/taller-docker/natura-poc.prod; make ci-deploy-continue'
