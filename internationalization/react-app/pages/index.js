@@ -165,7 +165,7 @@ const HelloWorld = ({ t = v => v }) => {
   )
 }
 
-const TranslatedHelloWorld = translate('')(HelloWorld)
+const TranslatedHelloWorld = translate('contextHelloWorld')(HelloWorld)
 
 const Home = () => (
   <div>
