@@ -44,16 +44,7 @@ styles:
 run-homolog:
 	sudo docker-compose -f docker-compose.homolog.yml up -d
 
-ci-deploy-dev: install styles
-	ENV=dev ./scripts/ci-deploy.sh
-
-ci-deploy-homolog: install
-	ENV=homolog ./scripts/ci-deploy.sh
-
-ci-deploy-prod: install
-	ENV=prod ./scripts/ci-deploy.sh
-
-ci-deploy-tests-dev: install
-	ENV=dev ./scripts/ci-deploy-tests-dev.sh
+ci-deploy:
+	./scripts/ci-deploy.sh
 
 default: run
