@@ -37,6 +37,7 @@ services:
   drupal:
     extends: drupal_meta
     image: natura-poc-drupal # Only needed to override "drupal_meta" image.
+    restart: unless-stopped
     build:
       context: ./docker/
       args:
