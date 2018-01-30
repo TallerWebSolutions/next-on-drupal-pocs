@@ -3,7 +3,11 @@ set -xe
 
 # Build GitBook
 npm i -g gitbook-cli
-(cd book; gitbook build)
+(
+  cd book
+  cp ../README.md .
+  gitbook build
+)
 
 # Deploy
 rsync -avzhe "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" \
