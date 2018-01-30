@@ -28,6 +28,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:start": "yarn build && yarn start",
     "start": "NODE_ENV=production node server.js"
   },
   "devDependencies": {

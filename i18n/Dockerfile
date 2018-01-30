@@ -8,4 +8,4 @@ COPY ./react-app $HOME
 
 RUN yarn install --progress=false
 
-CMD [ "yarn", "run", "build" ]
+CMD [ "yarn", "run", "build:start" ]
