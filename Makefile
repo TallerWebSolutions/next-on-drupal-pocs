@@ -36,10 +36,10 @@ build:
 	docker-compose build app
 
 install:
-	docker-compose -f docker-compose.prod.yml run --entrypoint="./drupal/docker/run-entrypoint.sh" --rm drupal composer install
+	docker-compose run --entrypoint="./drupal/docker/run-entrypoint.sh" --rm drupal composer install
 
 install-prod:
-	docker-compose -f docker-compose.prod.yml run --entrypoint="./drupal/docker/run-entrypoint.sh" --rm drupal composer install --no-dev --prefer-dist --optimize-autoloader
+	docker-compose run --entrypoint="./drupal/docker/run-entrypoint.sh" --rm drupal composer install --no-dev --prefer-dist --optimize-autoloader
 
 styles:
 	./scripts/styles.sh
