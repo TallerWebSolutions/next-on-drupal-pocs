@@ -7,16 +7,16 @@ _book
 .vscode
 
 # Ignore non-custom parts of Drupal.
-/drupal/core
-/drupal/modules/contrib
-/drupal/profiles/contrib
-/drupal/themes/contrib
-/drupal/sites/default/files
-/drupal/sites/simpletest
+/drupal/drupal/core
+/drupal/drupal/modules/contrib
+/drupal/drupal/profiles/contrib
+/drupal/drupal/themes/contrib
+/drupal/drupal/sites/default/files
+/drupal/drupal/sites/simpletest
 
 
 # Ignore local settings.
-/drupal/sites/default/settings.local.php
+/drupal/drupal/sites/default/settings.local.php
 
 # Ignore dependencies.
 vendor/

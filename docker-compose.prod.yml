@@ -26,7 +26,7 @@ services:
     image: natura-poc-drupal # Only needed to override "drupal_meta" image.
     restart: unless-stopped
     build:
-      context: ./docker/
+      context: ./drupal/docker/
       args:
         USER_ID: "$USER_ID"
         GROUP_ID: "$GROUP_ID"
@@ -41,7 +41,7 @@ services:
         # 3 - Place drupal files.
       - $HOME/.ssh:/drupal/.ssh
       - $HOME/.gitconfig:/drupal/.gitconfig
-      - $PWD:/drupal/drupal
+      - $PWD/drupal:/drupal/drupal
     environment:
       - VIRTUAL_HOST=natura-poc-drupal.dropit.in
 
