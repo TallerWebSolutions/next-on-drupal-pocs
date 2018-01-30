@@ -1,4 +1,5 @@
 #!/bin/bash
+set -xe
 
 # Build GitBook
 npm i -g gitbook-cli
