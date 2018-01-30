@@ -1,23 +1,10 @@
 version: '2'
 
 services:
-  pwa_apollo_offline:
-    image: node:8.5
-    build:
-     context: ./apollo
-     dockerfile: Dockerfile
-    volumes:
-      - ./apollo:/pwa_apollo_offline
-    hostname: pwaapollooffline
-    ports:
-      - 3000:80
-    environment:
-      - VIRTUAL_HOST=natura-pwa-apollo-offline.dropit.in
-
   book:
     image: nginx
     volumes:
-      - ./_book:/usr/share/nginx/html:ro
+      - ./book/_book:/usr/share/nginx/html:ro
     hostname: book
     expose:
       - 80
@@ -71,8 +58,6 @@ services:
     build:
      context: ./i18n
      dockerfile: Dockerfile
-    volumes:
-      - ./i18n:/i18n
     hostname: i18n
     environment:
       - VIRTUAL_HOST=natura-poc-i18n.dropit.in
