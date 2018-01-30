@@ -15,7 +15,7 @@ services:
     extends: meta
     image: natura-poc-app # Only needed to override "meta" image.
     build:
-      context: ./docker/
+      context: ./drupal/docker/
       args:
         USER_ID: "$USER_ID"
         GROUP_ID: "$GROUP_ID"
@@ -32,7 +32,7 @@ services:
         # 3 - Place app files.
       - $HOME/.ssh:/drupal/.ssh
       - $HOME/.gitconfig:/drupal/.gitconfig
-      - $PWD:/drupal/app
+      - $PWD/drupal:/drupal/drupal
 
   database:
     extends: meta
