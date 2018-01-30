@@ -38,13 +38,16 @@ build:
 install:
 	docker-compose run --entrypoint="./docker/run-entrypoint.sh" --rm app composer install
 
+install-prod:
+	docker-compose run --entrypoint="./docker/run-entrypoint.sh" --rm app composer install --no-dev --prefer-dist --optimize-autoloader
+
 styles:
 	./scripts/styles.sh
 
 run-homolog:
 	sudo docker-compose -f docker-compose.homolog.yml up -d
 
-ci-deploy:
+ci-deploy: install-prod
 	./scripts/ci-deploy.sh
 
 ci-deploy-continue:
