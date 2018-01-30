@@ -8,4 +8,8 @@ COPY ./react-app $HOME
 
 RUN yarn install --progress=false
 
-CMD [ "yarn", "run", "build:start" ]
+EXPOSE 80
+
+ENV PORT=80
+
+CMD yarn build:start

@@ -54,7 +54,7 @@ services:
       - $PWD/.mysql/:/var/lib/mysql
 
   next_react_i18n:
-    image: node:8.5
+    image: next_react_i18n
     build:
      context: ./i18n
      dockerfile: Dockerfile
