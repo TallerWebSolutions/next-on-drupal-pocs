@@ -12,7 +12,7 @@ import { createHttpLink } from 'apollo-link-http'
 import { isDevelopment, isClient, isServer } from 'app/lib/func'
 import { extractCacheTags } from 'app/lib/cacheTagsAfterware'
 
-const GRAPHQL_HOST = process.env.GRAPHQL_HOST  || 'http://localhost/graphql'
+const GRAPHQL_HOST = process.env.GRAPHQL_HOST || 'http://localhost/graphql'
 
 // Polyfill fetch() if needed. Useful for server-side code.
 const fetcher = global.fetch || fetch

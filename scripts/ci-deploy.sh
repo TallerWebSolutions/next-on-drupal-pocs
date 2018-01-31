@@ -11,8 +11,8 @@ npm i -g gitbook-cli
 
 # Deploy
 rsync -avzhe "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" \
-  --exclude '.git' --exclude 'node_modules' --exclude '.mysql' --delete --progress ./ \
   --exclude 'drupal/drupal/sites/default/files/' --exclude 'settings.local.php' \
+  --exclude '.git' --exclude 'node_modules' --exclude '.mysql' --delete --progress ./ \
   taller-docker@162.243.5.100:~/natura-poc.prod/
 
 # Setup Docker services
