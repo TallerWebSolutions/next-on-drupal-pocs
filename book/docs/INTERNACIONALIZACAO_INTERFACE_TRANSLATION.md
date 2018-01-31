@@ -7,19 +7,20 @@ Para a internacionalização da interface (Nextjs) estamos utilizando o módulo 
 O i18next basicamente é um framework de internacionalização, mas vai mais além, fornecendo uma solução completa de localização.
 
 Dentre as funcionalidades do i18next incluem:
+
  - Detecção do idioma do usuário;
  - Carregamento dos idiomas;
  - Cache dos idiomas (opcional).
 
 ## Fields no Drupal GraphQL
 
-Para podermos consumir as traduções do Drupal, utilizamos o módulo GraphQL que serve como um meio de campo entre o Drupal e o NextJS.
+Para podermos consumir as traduções do Drupal, foi desenvolvida uma extensão do i18next para plugá-lo ao backend de GraphQL do Drupal.
 
-Foram criados dois fields principais para nos auxiliar no serviço de tradução.
+Do lado do Drupal foram criados dois campos principais para nos auxiliar no serviço de tradução.
 
-### RootTranslations Field
+### `translations`
 
-Basicamente neste Field utilizamos a classe StringInterface do Drupal para nos retornar através de uma query o conjunto de traduções baseados nos argumentos: idioma, string chave de tradução (source) e contexto.
+Basicamente neste campo utilizamos a classe `StringInterface` do Drupal para nos retornar através de uma query o conjunto de traduções baseados nos argumentos: idioma e contexto, e a flag translated que filtra os resultados, retornando apenas as strings que de fato foram traduzidas.
 
 ```php
 /**
@@ -56,11 +57,11 @@ Basicamente neste Field utilizamos a classe StringInterface do Drupal para nos r
  }
 ```
 
-Este field é muito importante pois graças a ele conseguimos o conjunto completo de uma tradução por um contexto e idioma, como por exemplo um contexto "home", em apenas uma requisição conseguimos todas traduções que precisamos para página home.
+Este campo é muito importante pois graças a ele conseguimos o conjunto completo de uma tradução por um contexto e idioma, como por exemplo um contexto "home", em apenas uma requisição conseguimos todas traduções que precisamos para página home.
 
-### RootTranslation Field
+### `translation`
 
-Este field utiliza a classe LocaleTranslation do Drupal e é responsável por nos retornar uma tradução indivídual, ou seja podemos consultar uma tradução de apenas uma chave no drupal, utilizando a string a ser traduzida, o idioma e o contexto desta string. Além disso caso a string não seja encontrada, a função considera que é uma nova chave de interface para o contexto e idioma passado, assim é criado uma nova entrada de interface para tradução no Drupal.
+Este campo utiliza a classe `LocaleTranslation` do Drupal e é responsável por nos retornar uma tradução indivídual, ou seja podemos consultar uma tradução de apenas uma chave no drupal, utilizando a string a ser traduzida, o idioma e o contexto desta string. Além disso caso a string não seja encontrada, a função considera que é uma nova chave de interface para o contexto e idioma passado, assim é criado uma nova entrada de interface para tradução no Drupal.
 
 ```php
 /**
@@ -92,6 +93,8 @@ Este field utiliza a classe LocaleTranslation do Drupal e é responsável por no
  }
 ```
 
+Este campo é usado como _fallback_ do i18next, o que permite que novas traduções sejam feitas, na medida que são feitas entregas contínuas do projeto.
+
 ## react-i18next e i18next na aplicação
 
 Para controle da tradução de interface no NextJS utilizamos o conjunto de pacotes do i18next, nesta poc foi implementado da seguinte forma:
@@ -114,7 +117,7 @@ const i18nOptions = {
 
 Para integração do i18next com o GraphQL do Drupal houve a necessidade de implementarmos um plugin no padrão do i18next.
 
-Este plugin é responsável por toda lógica de comunicação entre o NextJS e o GraphQL, bem como as queries para os fields que implementamos no Drupal e as funções do padrão i18next. Para essa comunicação utilizamos um client do Apollo.
+Este plugin é responsável por toda lógica de comunicação entre o NextJS e o GraphQL, bem como as queries para os campos que implementamos no Drupal e as funções do padrão i18next. Para essa comunicação utilizamos um client do Apollo.
 
 ```javascript
 class DrupalGraphQLI18nextPlugin {
@@ -251,7 +254,7 @@ const withI18n = ComposedComponent => class WithI18n extends React.Component {
 }
 ```
 
-Para a utilização do i18next criamos um componente e utilizamos o HoC translate do i18next através deste HoC temos acesso a função "t" que é efetivamente a função de tradução do i18next. Segue o exemplo de utilização da função de tradução.
+Para a utilização do i18next criamos um componente e utilizamos o HoC `translate`. Através deste HoC temos acesso a função `t()` que é efetivamente a função de tradução do i18next. Segue o exemplo de utilização da função de tradução.
 
 ```javascript
 const HelloWorld = ({ t = v => v }) => {
@@ -282,6 +285,7 @@ export default compose(
 )(Home)
 ```
 
-Links úteis:
+### Links úteis:
+
 [i18next documentation](https://www.i18next.com/)
 [react-i18next documentation](https://react.i18next.com/)

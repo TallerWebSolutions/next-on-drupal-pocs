@@ -34,16 +34,4 @@ Para a tradução de conteúdos, foi utilizado o combo tradicional do Drupal 8 c
 
 ## Tradução da APP/PWA
 
-Aproveitamos o conceito de contextos do sistema de tradução do Drupal para agrupar traduções que podem relacionadas com a PWA como um todo ou uma parte específica da aplicação. Desta forma
-
-# Fundamentos
- - A língua, contendo a codificação do texto em diferentes sistemas de escrita (Alfabetos), diferentes sistemas numerais, scripts da esquerda-para-direita e scripts da direita-para-esquerda (por exemplo, para língua hebraica). Os sistemas atuais utilizam Unicode para solucionar problemas de codificação de caracteres. Contendo também a representação gráfica do texto, o áudio e os subtítulos para vídeos;
- - O formato de data e tempo, incluindo diferentes calendários;
- - As diferentes formatações de números;
- - O fuso horário (UTC) de cada país para coincidir com a língua a ser internacionalizada;
- - Os números pré-definidos governamentalmente como: passaportes, RG, CPF;
- - Os padrões de números de telefones, endereço e códigos postais internacionais;
- - Os pesos e medidas de cada país;
- - O tamanho de papéis;
- - A moeda local;
- - Nomes e títulos locais.
+Aproveitamos o conceito de contextos do sistema de tradução do Drupal para agrupar traduções que podem relacionadas com a PWA como um todo ou uma parte específica da aplicação. Desta forma conseguimos carregar um set de tradução em uma única requisição para uma determinada página ou seção da aplicação.

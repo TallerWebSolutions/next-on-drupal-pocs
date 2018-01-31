@@ -1,6 +1,6 @@
 # Negociação do idioma
 
-Autilização da negociação de idioma é feita utilizando o plugin de detecção de idioma do i18next chamado "i18next-browser-languageDetector".
+A negociação de idioma é feita utilizando o plugin de detecção de idioma do i18next chamado "i18next-browser-languageDetector".
 
 Com este plugin temos acesso tanto a detecção de idioma automática pelo navegador do usuário utilizado no código:
 
@@ -11,7 +11,8 @@ if (process.browser) {
 }
 ```
 
-Além disso nos fornece a alteração do idioma através da utilização de query strings na url com o padrão `?lng=LANGUAGE`
+Este plugin também nos fornece a alteração do idioma através da query string `lng` na url, ex: `?lng=pt-br`
 
-Links úteis:
+### Links úteis:
+
 [i18next-browser-languageDetector](https://github.com/i18next/i18next-browser-languageDetector)

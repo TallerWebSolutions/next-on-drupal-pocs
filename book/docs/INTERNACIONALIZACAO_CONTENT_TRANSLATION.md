@@ -1,6 +1,6 @@
 # Internacionalização de conteúdo
 
-No Drupal, o principal método de tradução de conteúdo é a utilização do módulo de tradução (content_translation), desta forma apenas uma entidade é criada por conteúdo, e a tradução deste coteúdo se torna uma entidade independente apenas com os campos marcados para serem traduzidos.
+No Drupal, o principal método de tradução de conteúdo é a utilização do módulo de tradução (content_translation), desta forma apenas uma entidade é criada por conteúdo, e a tradução deste conteúdo se torna uma entidade independente apenas com os campos marcados para serem traduzidos.
 
 ## Configurando um conteúdo para ser traduzido
 
@@ -26,6 +26,6 @@ Primeiramente devemos habilitar o módulo GraphQL para o Drupal, desta forma boa
 
 Utilizamos a ferramenta GraphQL Explorer para realizar as consultas pelo GraphQL.
 
-Realizamos a consulta ao node do tipo artigo ID 2 através da sua rota `/node/2` onde informamos quais os campos que a consulta irá retornar e quais as traduções através da função `entityTranslate` onde como argumento identificamos qual o idioma de tradução a ser retornado.
+Realizamos a consulta ao node do tipo artigo ID 2 através da sua rota `/node/2` onde informamos quais os campos que a consulta irá retornar e quais as traduções no campo `entityTranslate`, este campo possui o argumento `language` que usamos para identificar qual o idioma da tradução a ser retornada.
 
 ![Markdown Course](assets/graphql-translation.png)
