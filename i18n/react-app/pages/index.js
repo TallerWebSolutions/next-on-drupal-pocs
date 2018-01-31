@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
-import { compose } from 'recompose'
+import { compose, withHandlers } from 'recompose'
 import i18next from 'i18next'
 import { I18nextProvider, translate } from 'react-i18next'
 
@@ -151,7 +151,11 @@ const withI18n = ComposedComponent => class WithI18n extends React.Component {
   }
 }
 
-const HelloWorld = ({ t = v => v }) => {
+const changeLanguage = ({ i18n }) => e => {
+  i18n.changeLanguage(e)
+}
+
+const HelloWorld = ({ t = v => v, changeLanguage }) => {
   const count1 = 1
   const count5 = 5
 
@@ -169,11 +173,19 @@ const HelloWorld = ({ t = v => v }) => {
       <p>{ t('Plurals') }</p>
       <p>{ count1 > 1 ? count1 + ' ' + t('oranges') : t('1 orange') }</p>
       <p>{ count5 > 1 ? count5 + ' ' + t('oranges') : t('1 orange') }</p>
+
+      <button onClick={ () => changeLanguage('pt-BR') }>Português</button>
+      <button onClick={ () => changeLanguage('en') }>Inglês</button>
     </div>
   )
 }
 
-const TranslatedHelloWorld = translate('contextHelloWorld')(HelloWorld)
+const TranslatedHelloWorld = compose(
+  translate('contextHelloWorld'),
+  withHandlers({
+    changeLanguage: changeLanguage
+  }),
+)(HelloWorld)
 
 const Home = () => (
   <div>
