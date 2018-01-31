@@ -41,18 +41,18 @@ RUN chown ${USER_NAME}:${GROUP_NAME} /${APP_NAME}/.bashrc
 # --------------------
 
 RUN rm -Rf /var/www/drupal \
-    && ln -s /${USER_NAME}/app/drupal /var/www/drupal
+    && ln -s /${USER_NAME}/drupal /var/www/drupal
 
 
 # Setup user and initialization directory.
 # ----------------------------------------
 
 USER ${USER_NAME}
-WORKDIR /${USER_NAME}/app
+WORKDIR /${USER_NAME}/drupal
 
 # Setup PATH env variables.
 # -------------------------
-ENV PATH="/${USER_NAME}/app/vendor/bin:$PATH"
+ENV PATH="/${USER_NAME}/drupal/vendor/bin:$PATH"
 
 
 # Install prestissimo for faster composer installs.

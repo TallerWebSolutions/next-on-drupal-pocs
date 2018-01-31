@@ -12,7 +12,7 @@ export USER_ID=$(shell id -u)
 export GROUP_ID=$(shell if [ `id -g` == '20' ]; then echo '1000'; else echo `id -g`; fi)
 
 run:
-	docker-compose run --service-ports --rm app
+	docker-compose run --service-ports --rm drupal
 
 run-dev:
 	docker-compose -f docker-compose.dev.yml up -d
@@ -21,7 +21,7 @@ in:
 	docker exec -it $(shell docker-compose ps | grep _app_run_ | cut -d" " -f 1) /bin/bash
 
 test:
-	docker-compose run --service-ports --rm app scripts/test.sh
+	docker-compose run --service-ports --rm drupal scripts/test.sh
 
 mysql:
 	docker exec -it natura-poc-db mysql -h localhost -u root -ppassword drupal
@@ -33,7 +33,7 @@ clean:
 	docker-compose down
 
 build:
-	docker-compose build app
+	docker-compose build drupal
 
 install:
 	docker-compose run --entrypoint="./drupal/docker/run-entrypoint.sh" --rm drupal composer install
