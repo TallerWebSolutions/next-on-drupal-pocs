@@ -26,31 +26,31 @@ echo ""
 
 # Install Drupal, if not installed yet.
 # -------------------------------------
-if [ ! -f /drupal/drupal/sites/default/settings.local.php ]
+if [ ! -f /drupal/app/drupal/sites/default/settings.local.php ]
 then
   # 1 - Install core and other dependencies.
   composer install
 
   # 2 - Create basic files and ensure permissions.
-  mkdir -p /drupal/drupal/sites/default/files
+  mkdir -p /drupal/app/drupal/sites/default/files
 
   # 3 - Copy configuration files.
-  sudo cp /drupal/drupal/sites/template.settings.local.php /drupal/drupal/sites/default/settings.local.php
-  sudo chmod -R 777 /drupal/drupal/sites/default/settings.local.php
+  sudo cp /drupal/app/drupal/sites/template.settings.local.php /drupal/app/drupal/sites/default/settings.local.php
+  sudo chmod -R 777 /drupal/app/drupal/sites/default/settings.local.php
 
   # 4 - Configure database connection based on docker-compose env variables.
-  sed -i "s/{MYSQL_DATABASE}/${MYSQL_DATABASE}/g" /drupal/drupal/sites/default/settings.local.php
-  sed -i "s/{MYSQL_PASSWORD}/${MYSQL_PASSWORD}/g" /drupal/drupal/sites/default/settings.local.php
-  sed -i "s/{MYSQL_USER}/${MYSQL_USER}/g" /drupal/drupal/sites/default/settings.local.php
+  sed -i "s/{MYSQL_DATABASE}/${MYSQL_DATABASE}/g" /drupal/app/drupal/sites/default/settings.local.php
+  sed -i "s/{MYSQL_PASSWORD}/${MYSQL_PASSWORD}/g" /drupal/app/drupal/sites/default/settings.local.php
+  sed -i "s/{MYSQL_USER}/${MYSQL_USER}/g" /drupal/app/drupal/sites/default/settings.local.php
 
   # 5 - Install standard profile.
-  cd /drupal/drupal
+  cd /drupal/app/drupal
 
   # Set PHP_OPTIONS environment variable to fix sendmail error.
   ../bin/drush si --site-name="Natura POC" --account-name="admin" --account-pass="password" -y
 
   # 6 - Import configs, if available.
-  if [ -f /drupal/site-id ]
+  if [ -f /drupal/app/site-id ]
   then
     ../bin/drush cset system.site uuid "`cat /drupal/site-id`" -y
     ../bin/drush config-import --partial -y
@@ -62,9 +62,9 @@ fi
 # Ensure permissions are correct.
 # -------------------------------
 
-sudo chmod -R 777 /drupal/drupal/sites/default/files
-sudo chmod 777 /drupal/drupal/sites/default/settings.local.php
-sudo chmod +w -R /drupal/drupal/sites/default
+sudo chmod -R 777 /drupal/app/drupal/sites/default/files
+sudo chmod 777 /drupal/app/drupal/sites/default/settings.local.php
+sudo chmod +w -R /drupal/app/drupal/sites/default
 
 echo ""
 echo "--------------------------------------"

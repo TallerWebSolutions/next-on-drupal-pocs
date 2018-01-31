@@ -41,14 +41,14 @@ RUN chown ${USER_NAME}:${GROUP_NAME} /${APP_NAME}/.bashrc
 # --------------------
 
 RUN rm -Rf /var/www/drupal \
-    && ln -s /${USER_NAME}/drupal /var/www/drupal
+    && ln -s /${USER_NAME}/app/drupal /var/www/drupal
 
 
 # Setup user and initialization directory.
 # ----------------------------------------
 
 USER ${USER_NAME}
-WORKDIR /${USER_NAME}/drupal
+WORKDIR /${USER_NAME}/app
 
 # Setup PATH env variables.
 # -------------------------

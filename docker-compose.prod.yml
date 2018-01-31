@@ -42,7 +42,7 @@ services:
         # 3 - Place drupal files.
       - $HOME/.ssh:/drupal/.ssh
       - $HOME/.gitconfig:/drupal/.gitconfig
-      - $PWD/drupal:/drupal
+      - $PWD/drupal:/drupal/app
     command: tail -f /dev/null
     environment:
       - VIRTUAL_HOST=natura-poc-drupal.dropit.in

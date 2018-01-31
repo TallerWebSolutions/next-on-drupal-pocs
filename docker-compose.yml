@@ -32,7 +32,7 @@ services:
         # 3 - Place app files.
       - $HOME/.ssh:/drupal/.ssh
       - $HOME/.gitconfig:/drupal/.gitconfig
-      - $PWD/drupal:/drupal
+      - $PWD/drupal:/drupal/app
 
   database:
     extends: meta
