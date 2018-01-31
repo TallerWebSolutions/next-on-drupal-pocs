@@ -5,6 +5,7 @@ import i18next from 'i18next'
 import { I18nextProvider, translate } from 'react-i18next'
 
 import gql from 'graphql-tag'
+import { getGraphqlHost } from 'app/lib/func'
 import initApollo from '../src/lib/initApollo'
 
 const i18nOptions = {
@@ -156,6 +157,13 @@ const HelloWorld = ({ t = v => v }) => {
 
   return (
     <div>
+
+      {/* @TODO Remove this ugly code when environments vars are resolved. */}
+      <script dangerouslySetInnerHTML={ { __html:
+      `window.env = {
+        GRAPHQL_HOST: '${getGraphqlHost(true)}'
+      };` } } />
+
       <h1>POC - { t('Internationalization') }</h1>
       <p>{ t('Welcome to the poc of internationalization, here we show some stuffs of this incredible feature. This is a interface translated using the i18next framework.') }</p>
       <p>{ t('Plurals') }</p>
