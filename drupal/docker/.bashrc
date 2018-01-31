@@ -62,5 +62,4 @@ if [ -x /usr/lib/command-not-found -o -x /usr/share/command-not-found/command-no
 fi
 
 # Add locals to PATH.
-PATH="$HOME/drupal/vendor/bin:$PATH"
-PATH="$HOME/drupal/drupal/themes/custom/spa/node_modules/.bin:$PATH"
+PATH="$HOME/app/vendor/bin:$PATH"
