@@ -28,4 +28,46 @@ Utilizamos a ferramenta GraphQL Explorer para realizar as consultas pelo GraphQL
 
 Realizamos a consulta ao node do tipo artigo ID 2 através da sua rota `/node/2` onde informamos quais os campos que a consulta irá retornar e quais as traduções no campo `entityTranslate`, este campo possui o argumento `language` que usamos para identificar qual o idioma da tradução a ser retornada.
 
-![Markdown Course](assets/graphql-translation.png)
+### Consulta de tradução de conteúdo no GraphQL
+
+Consulta da tradução do título do artigo.
+
+```
+query {
+  route(path: "/node/1") {
+		article: nodeContext {
+      title
+      en: entityTranslation(language: en) {
+        ...on NodeArticle {
+          title
+        }
+      }
+      ptBR: entityTranslation(language: pt_br) {
+        ...on NodeArticle {
+          title
+        }
+      }
+    }
+  }
+}
+```
+
+Resultado da consulta realizada.
+
+```
+{
+  "data": {
+    "route": {
+      "article": {
+        "title": "New Article",
+        "en": {
+          "title": "New Article"
+        },
+        "ptBR": {
+          "title": "Novo artigo"
+        }
+      }
+    }
+  }
+}
+```
