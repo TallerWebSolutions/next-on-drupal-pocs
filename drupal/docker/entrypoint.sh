@@ -52,7 +52,7 @@ then
   # 6 - Import configs, if available.
   if [ -f /drupal/app/site-id ]
   then
-    ../bin/drush cset system.site uuid "`cat /drupal/site-id`" -y
+    ../bin/drush cset system.site uuid "`cat /drupal/app/site-id`" -y
     ../bin/drush config-import --partial -y
   fi
 

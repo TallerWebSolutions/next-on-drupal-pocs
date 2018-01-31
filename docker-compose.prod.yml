@@ -62,6 +62,7 @@ services:
      dockerfile: Dockerfile
     hostname: i18n
     environment:
+      - GRAPHQL_HOST=http://natura-poc-i18n.dropit.in/graphql
       - VIRTUAL_HOST=natura-poc-i18n.dropit.in
 
 networks:
