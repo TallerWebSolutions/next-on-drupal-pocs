@@ -1,0 +1,14 @@
+{
+  "plugins": [
+    "jsx-a11y"
+  ],
+  "extends": [
+    "taller/react",
+    "plugin:jsx-a11y/recommended"
+  ],
+  "rules": {
+    "no-mixed-operators": 0,
+    "import/first": 0,
+    "prefer-promise-reject-errors": 0
+  }
+}
