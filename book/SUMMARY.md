@@ -14,3 +14,5 @@
   * [Tradução de conteúdos](docs/INTERNACIONALIZACAO_CONTENT_TRANSLATION.md)
   * [Tradução de interface](docs/INTERNACIONALIZACAO_INTERFACE_TRANSLATION.md)
   * [Negociação de idioma](docs/INTERNACIONALIZACAO_LANGUAGE_NEGOTIATION.md)
+* [Introdução a Accessibilidade](docs/ACCESSIBILITY.md)
+  * [Princípios básicos (POUR)](docs/ACCESSIBILITY_BASIC_PRINCIPLES.md)
