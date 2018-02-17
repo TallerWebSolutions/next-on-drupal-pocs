@@ -15,4 +15,6 @@
   * [Tradução de interface](docs/INTERNACIONALIZACAO_INTERFACE_TRANSLATION.md)
   * [Negociação de idioma](docs/INTERNACIONALIZACAO_LANGUAGE_NEGOTIATION.md)
 * [Introdução a Accessibilidade](docs/ACCESSIBILITY.md)
-  * [Princípios básicos (POUR)](docs/ACCESSIBILITY_BASIC_PRINCIPLES.md)
+  * [Princípios básicos (POUR)](docs/ACCESSIBILITY_POUR.md)
+  * [Faça / Não faça](docs/ACCESSIBILITY_DOS_DONTS.md)
+  * [Acessibilidade com React](docs/ACCESSIBILITY_REACT.md)
