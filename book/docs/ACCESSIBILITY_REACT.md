@@ -1,6 +1,6 @@
 # Acessibilidade com React
 
-acessibilidade para web conhecido como [a11y](https://en.wiktionary.org/wiki/a11y) é suportado pelo React para poder criar aplicações acessiveis.
+Acessibilidade para web conhecido como [a11y](https://en.wiktionary.org/wiki/a11y) é suportado pelo React para poder criar aplicações acessiveis.
 
 ## WAI-ARIA
 
