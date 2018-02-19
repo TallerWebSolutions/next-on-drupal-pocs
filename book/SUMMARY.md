@@ -18,3 +18,4 @@
   * [Princípios básicos (POUR)](docs/ACCESSIBILITY_POUR.md)
   * [Faça / Não faça](docs/ACCESSIBILITY_DOS_DONTS.md)
   * [Acessibilidade com React](docs/ACCESSIBILITY_REACT.md)
+* [Referências de padrões de Front-end](FRONTEND_PATTERNS.md)  
