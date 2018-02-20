@@ -11,31 +11,40 @@
 ## Eslint
 
 ### Por quê?
-  * Clear consistence code across teams.
-  * Configurable rules.
-  * Ability to write your own plug-ins and rules.
+
+  * Código limpo e consistente entre os times.
+  * Facilidade na configuração de regras.
+  * Abilidate de escrever seus propias plug-ins e regras.
 
 ### Como ?
 
-  You have to create a file .eslinrc and define your rules.
+  No arquivo `.eslinrc` é definido a configuração e as regras do EsLint.    
 
 ```
 /* @file: .eslintrc */
-
 {
-  extends: ["taller/react"],
   globals: {
     __DEV__: false,
     __MOCK_GRAPHQL__: false,
     drupalSettings: false,
     xdescribe: false,
-    xit: false
+    xit: false  
   },
   rules: {
     no-mixed-operators: 0,
     import/first: 0,
     prefer-promise-reject-errors: 0
   }
+}
+```
+
+A Taller tem  um repostorio  [eslint-config-taller](https://github.com/TallerWebSolutions/eslint-config-taller) com as configurações Eslint utilizadas no seus projetos React. Pra utilizar ele é instalar e acrecentar a linha de embaixo no `.eslintrc`.
+
+```
+/* @file: .eslintrc */
+{
++ extends: ["taller/react"],
+  ...
 }
 ```
 
