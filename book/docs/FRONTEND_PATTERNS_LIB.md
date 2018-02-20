@@ -20,6 +20,8 @@
   You have to create a file .eslinrc and define your rules.
 
 ```
+/* @file: .eslintrc */
+
 {
   extends: ["taller/react"],
   globals: {
@@ -43,6 +45,8 @@
 
 ## Jest
 
+It's a JavaScript unit framework.
+
 ### Por quê?
 
 * All dependencies are mocked by default.
@@ -55,6 +59,8 @@
 ### Como ?
 
 ```
+/* @file: package.json */
+
 {
   ...
   scripts: {
@@ -67,7 +73,6 @@
 
   "jest": {
     "setupFiles": [
-      "raf/polyfill",
       "<rootDir>/enzyme.setup.js"
     ],
     "collectCoverage": true,
@@ -75,13 +80,57 @@
       "<rootDir>/node_modules/",
       "<rootDir>/.next",
       "<rootDir>/temp"
-    ],
-    "moduleNameMapper": {
-      "modernizr": "<rootDir>/mocks/modernizr.js"
-    }
+    ]
   }
 }
 ```
+
+## Enzyme
+
+Enzyme is a JavaScript utility library for testing React components.
+
+### Por quê?
+
+* Convenient utilities to work with shallow rendering, static rendered markup or DOM rendering.
+* jQuery-like API to find elements, read props, etc.
+
+### Como ?
+
+
+```
+/* @file: enzyme.setup.js */
+
+import { configure } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+
+configure({ adapter: new Adapter() })
+```
+
+```
+/* @file: package.json */
+
+{
+  ...
+
+  "jest": {
++   "setupFiles": [
++     "<rootDir>/enzyme.setup.js"
++   ],
+    "collectCoverage": true,
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/.next",
+      "<rootDir>/temp"
+    ]
+  }
+}
+```
+
+**References:**
+* https://hackernoon.com/testing-react-components-with-jest-and-enzyme-41d592c174f
+* http://codeheaven.io/testing-react-components-with-enzyme/
+
+
 
 ## Husky
 
