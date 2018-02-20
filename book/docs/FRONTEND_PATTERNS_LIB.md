@@ -1,12 +1,4 @@
-# Techs / libs utilizadas, por que e exemplo.
-  * Eslint
-  * EditorConfig (espaço em vez de tabs, etc...)
-  * Jest para testes
-  * Husky
-  * React Router (?)
-  * Redux
-  * Ramda
-  * Recompose
+# Automatização de revisão de código e qualidade
 
 ## Eslint
 
@@ -14,11 +6,11 @@
 
   * Código limpo e consistente entre os times.
   * Facilidade na configuração de regras.
-  * Abilidate de escrever seus propias plug-ins e regras.
+  * Habilidade de escrever seus propias plug-ins e regras.
 
 ### Como ?
 
-  No arquivo `.eslinrc` é definido a configuração e as regras do EsLint.    
+No arquivo `.eslinrc` é definido a configuração e as regras do EsLint.    
 
 ```
 /* @file: .eslintrc */
@@ -48,11 +40,6 @@ A Taller tem  um repostorio  [eslint-config-taller](https://github.com/TallerWeb
 }
 ```
 
-## EditorConfig
-
-* Spaces over tabs (2 spaces).
-
-
 ## Jest
 
 [Jest](https://facebook.github.io/jest/) é um framework de JavaScript pra fazer testes unitarios.
@@ -63,11 +50,6 @@ A Taller tem  um repostorio  [eslint-config-taller](https://github.com/TallerWeb
 * Fácil de configurar.
 * Fácil criação de mocks.
 * Snapshot testing.
-
-<!-- * Spy // if a functions is called  
-* Stub // fake object with fake returns
-* Mock // -->
-
 
 **References:**
 * http://andrew.codes/jest-vs-mocha-why-jest-wins/
