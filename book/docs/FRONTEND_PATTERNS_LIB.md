@@ -39,15 +39,49 @@
 
 ## EditorConfig
 
-### Spaces over tabs.
-
+* Spaces over tabs (2 spaces).
 
 ## Jest
 
 ### Por quê?
 
+* All dependencies are mocked by default.
+* Easy setup and configuration.
+* Auto-magically finds and runs all your tests; no registration required.
+
+**References:**
+* http://andrew.codes/jest-vs-mocha-why-jest-wins/
+
 ### Como ?
 
+```
+{
+  ...
+  scripts: {
+    ...
+    "test:unit": "./node_modules/jest/bin/jest.js",
+    "test:unit:watch": "yarn test:unit -- --watch"
+  },
+
+  ...
+
+  "jest": {
+    "setupFiles": [
+      "raf/polyfill",
+      "<rootDir>/enzyme.setup.js"
+    ],
+    "collectCoverage": true,
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/.next",
+      "<rootDir>/temp"
+    ],
+    "moduleNameMapper": {
+      "modernizr": "<rootDir>/mocks/modernizr.js"
+    }
+  }
+}
+```
 
 ## Husky
 
