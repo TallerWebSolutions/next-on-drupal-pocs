@@ -52,20 +52,29 @@ A Taller tem  um repostorio  [eslint-config-taller](https://github.com/TallerWeb
 
 * Spaces over tabs (2 spaces).
 
+
 ## Jest
 
-It's a JavaScript unit framework.
+[Jest](https://facebook.github.io/jest/) é um framework de JavaScript pra fazer testes unitarios.
 
 ### Por quê?
 
-* All dependencies are mocked by default.
-* Easy setup and configuration.
-* Auto-magically finds and runs all your tests; no registration required.
+* React integration.
+* Fácil de configurar.
+* Fácil criação de mocks.
+* Snapshot testing.
+
+<!-- * Spy // if a functions is called  
+* Stub // fake object with fake returns
+* Mock // -->
+
 
 **References:**
 * http://andrew.codes/jest-vs-mocha-why-jest-wins/
 
 ### Como ?
+
+É definido dois comandos para rodar os testes. O primeiro é usado nos deploys e o segundo no desenvolvimento de testes, porque ele fica escutando e executando as mudanças dos testes ao mesmo tempo.
 
 ```
 /* @file: package.json */
@@ -77,7 +86,16 @@ It's a JavaScript unit framework.
     "test:unit": "./node_modules/jest/bin/jest.js",
     "test:unit:watch": "yarn test:unit -- --watch"
   },
+  ...
+}
+```
 
+A configuração do Jest é definido no arquivo `package.json`.
+
+```
+/* @file: package.json */
+
+{
   ...
 
   "jest": {
@@ -96,7 +114,7 @@ It's a JavaScript unit framework.
 
 ## Enzyme
 
-Enzyme is a JavaScript utility library for testing React components.
+[Enzyme](http://airbnb.io/enzyme/) is a JavaScript utility library for testing React components.
 
 ### Por quê?
 
@@ -104,7 +122,6 @@ Enzyme is a JavaScript utility library for testing React components.
 * jQuery-like API to find elements, read props, etc.
 
 ### Como ?
-
 
 ```
 /* @file: enzyme.setup.js */
@@ -138,8 +155,6 @@ configure({ adapter: new Adapter() })
 **References:**
 * https://hackernoon.com/testing-react-components-with-jest-and-enzyme-41d592c174f
 * http://codeheaven.io/testing-react-components-with-enzyme/
-
-
 
 ## Husky
 
