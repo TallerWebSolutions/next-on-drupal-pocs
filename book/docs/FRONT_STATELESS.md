@@ -1,0 +1,6 @@
+# Criação de componentes visuais (styleguide)
+
+* São componentes [stateless](https://javascriptplayground.com/functional-stateless-components-react/), pois devem ser reaproveitáveis ao máximo, inclusive entre projetos diferentes. Por isso regras de negócio devem ficar fora desses componentes.
+* Cuidam única e exclusivamente de sua apresentação visual, sem definir o próprio estado. Variações devem sempre ser controladas via propriedade pois isso evita que o componente funcione apenas num contexto específico
+* Evitar ao máximo usar a api do browser diretamente, o React e o React-dom oferecem ferramentas para praticamente tudo o que é necessário implementar. Em último caso, implementar chamadas à api do browser de forma condicional evitando, assim, erros em sistemas que fazem renderização no server-side.
+* Incluem um preview do [Storybook](https://storybook.js.org/) (showcase de componentes) no formato ComponentName.story.js. Esse preview serve para validações das implementações de layout e também para testar os componentes funcionando desacoplados da aplicação.
