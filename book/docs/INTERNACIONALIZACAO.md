@@ -19,7 +19,7 @@ As tecnologias escolhidas para esta prova de conceito foram:
 
 Durante o processo de análise foram levantados os seguintes critérios:
 
-- Testar internacionalização de paragraphs, revisions e entity references (taxonomias, etc)
+- Testar internacionalização de parágrafos, revisões e entidades de referência (taxonomias, etc)
 - Testar fluxo de tradução de conteúdo
 - Módulo GraphQL do Drupal: passando parâmetros para campo `route` e outros como de listagens (views) para que o conteúdo seja filtrado por um determinado idioma
 - Internacionalização de interface React/Next integrado com strings do Drupal

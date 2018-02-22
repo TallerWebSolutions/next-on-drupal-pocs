@@ -24,7 +24,7 @@ O elemento `HTML <picture>` é um _container_ usado para especificar múltiplos 
       sizes="(max-width: 600px) 200px, 50vw">
 ```
 
-> Tanto a `<picture>` quanto o `srcset` não são 100% compatíveis com todos os navegadores, mas ambos atendem de maneira satisfatória. Se um navegador não entender o elemento `<picture>`, ele ao elemento `<img>` dentro dele. Se um navegador não entender `<img srcset ...>` voltará a usar o atributo `src` da imagem. Os elementos `<picture>` (e os sub-elementos de `<source>`) são os diferenciais quando você quer fazer a direção da arte em diferentes tamanhos / proporções de aspecto da imagem. O atributo srcset do elemento `<img>` é muito mais leve e é tudo o que você precisa se quiser projetar para diferentes displays de resolução.
+> Tanto a `<picture>` quanto o `srcset` não são 100% compatíveis com todos os navegadores, mas ambos atendem de maneira satisfatória. Se um navegador não entender o elemento `<picture>`, ele usará o elemento `<img>` dentro dele. Se um navegador não entender `<img srcset ...>` voltará a usar o atributo `src` da imagem. Os elementos `<picture>` (e os sub-elementos de `<source>`) são os diferenciais quando você quer fazer a direção da arte em diferentes tamanhos / proporções de aspecto da imagem. O atributo srcset do elemento `<img>` é muito mais leve e é tudo o que você precisa se quiser projetar para diferentes displays de resolução.
 
 # [_POLYFILL PictureFill_](http://scottjehl.github.io/picturefill/)
 

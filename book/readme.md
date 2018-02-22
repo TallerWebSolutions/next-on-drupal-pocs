@@ -6,7 +6,7 @@
 * [PWA com Apollo](docs/APOLLO.md)
   * [Criando um projeto](docs/APOLLO_BASIC.md)
   * [Configurando a PWA](docs/APOLLO_PWA.md)
-* [Introdução ao PictureFill](docs/PICTUREFILL.md)
+* [Responsive Images](docs/PICTUREFILL.md)
   * [Criando um projeto](docs/PICTUREFILL_BASIC.md)
 * [Introdução ao Cache Busting](docs/CACHEBUSTING.md)
   * [Exemplos de Cache Busting ](docs/CACHEBUSTING_EXAMPLE.md)
@@ -18,7 +18,7 @@
   * [Princípios básicos (POUR)](docs/ACCESSIBILITY_POUR.md)
   * [Faça / Não faça](docs/ACCESSIBILITY_DOS_DONTS.md)
   * [Acessibilidade com React](docs/ACCESSIBILITY_REACT.md) 
-* [Automatização de verificações - Husky](docs/HUSKY.md)
+* [Automatização de verificações](docs/HUSKY.md)
 * Referências de padrões de Front-end
   * [Preferência ao paradigma de programação funcional](docs/FRONT_FUNCTIONAL_PROGRAMMING.md)
   * [Qualidade de código](docs/FRONT_QUALITY_CODE.md)

@@ -28,7 +28,7 @@ No diretório `pages`, crie um arquivo `index.js` com o seguinte conteúdo:
     static getInitialProps(ctx) {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          resolve({ name: 'Taller' })
+          resolve({ name: 'Natura' })
         }, 500)
       })
     }
