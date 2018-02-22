@@ -24,3 +24,8 @@
 * tests (testes automatizados)
   * e2e (testes funcionais e de regressão visual, normalmente utilizando Nightwatch)
 * static (somente no Next, aqui ficam os arquivos estáticos)
+
+## Legenda
+* **Module**: código relativo a um mesmo domínio de negócio;
+* **Component**: componentes React puramente presentacionais;
+* **Container**: componentes React concientes do estado ou da API;
