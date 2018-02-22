@@ -12,7 +12,7 @@ Nesse exemplo é possível obervar:
 * Tratamento do estado fora do componente visual
 * Nenhum código de componente de fato, apenas acoplamento de dados e lógica a outro componente
 
-```
+```js
 import { compose, withHandlers, withState, flattenProp, renameProp } from 'recompose'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'

@@ -9,7 +9,7 @@
 * Para estilos que devem ser compartilhado entre componentes é importante criar um pacote separado e agnóstico ao projeto, para que possa ser usado como módulo em outros projetos e os componentes não quebrem ou fiquem sem estilos quando portados.
 
 ## Exemplo simples do CSS de um componente que usa CSS Modules
-```
+```css
 .spaced {
   padding: 1rem;
 }

@@ -12,7 +12,7 @@
 
 No arquivo `.eslinrc` é definido a configuração e as regras do EsLint.    
 
-```
+```js
 /* @file: .eslintrc */
 {
   globals: {
@@ -32,7 +32,7 @@ No arquivo `.eslinrc` é definido a configuração e as regras do EsLint.
 
 A Taller tem  um repostorio  [eslint-config-taller](https://github.com/TallerWebSolutions/eslint-config-taller) com as configurações Eslint utilizadas no seus projetos React. Pra utilizar ele é instalar e acrecentar a linha de embaixo no `.eslintrc`.
 
-```
+```js
 /* @file: .eslintrc */
 {
 + extends: ["taller/react"],
@@ -58,12 +58,12 @@ A Taller tem  um repostorio  [eslint-config-taller](https://github.com/TallerWeb
 
 É definido dois comandos para rodar os testes. O primeiro é usado nos deploys e o segundo no desenvolvimento de testes, porque ele fica escutando e executando as mudanças dos testes ao mesmo tempo.
 
-```
+```json
 /* @file: package.json */
 
 {
   ...
-  scripts: {
+  "scripts": {
     ...
     "test:unit": "./node_modules/jest/bin/jest.js",
     "test:unit:watch": "yarn test:unit -- --watch"

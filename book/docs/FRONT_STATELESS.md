@@ -12,7 +12,7 @@ Nesse componente é possível observar:
 * Variações de exibição usando proprieades
 * Implementação de estilos usando CSS Modules
 
-```
+```js
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'

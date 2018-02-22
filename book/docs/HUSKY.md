@@ -8,7 +8,7 @@ Adicione o Husky ao seu projeto usando o npm ou yarn:
 ```bash
   $ npm install husky --save-dev
 ```
-ou 
+ou
 ```bash
   $ yarn add husky --dev
 ```
@@ -16,7 +16,7 @@ ou
 ## Configuração
 O Husky suporta todos git hooks, pode vê-los clicando [aqui](https://github.com/typicode/husky/blob/master/HOOKS.md). Por padrão adicionamos os scripts de execução na pasta scripts e os nomeamos com o mesmo nome do hook. Abaixo tem um exemplo de como adicionar os hooks no package.js:
 
-```
+```json
 // ./package.json
 {
     "scripts":{
@@ -34,7 +34,7 @@ No exemplo acima, configuramos o Husky para executar um hook quando for utilizad
 $ git push origin master
 ```
 Ele executará o comando `yarn lint && yarn test:unit`.
-Se não existir nenhum problema com o lint ou com os teste do projeto, ele dará continuidade a execução do `git push`. 
+Se não existir nenhum problema com o lint ou com os teste do projeto, ele dará continuidade a execução do `git push`.
 Caso tenha algum erro com o lint ou com os testes, será exibido no terminal e a execução do push será cancelada.
 
 ### Ignorar o Husky

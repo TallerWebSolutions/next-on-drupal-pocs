@@ -9,13 +9,13 @@
 * Evitar uso de classes no React (Recompose é indicado para isso)
 * Escrita de algoritmos de maneira funcional (no JS, bibliotecas como o Ramda ajudam nisso)
 * Referências de conceitos básicos de programação funcional
-  * https://www.google.com/url?q=https://medium.com/@cscalfani/so-you-want-to-be-a-functional-programmer-part-1-1f15e387e536&sa=D&ust=1519241854578000&usg=AFQjCNE3y_3r6Z5PPQidxij_eUdDQJcOcA
+  * https://medium.com/@cscalfani/so-you-want-to-be-a-functional-programmer-part-1-1f15e387e536
   * https://blog.taller.net.br/programacao-funcional-parte1/
   * https://blog.taller.net.br/programacao-funcional-parte-2/
 
-## Exemplo demostrando um pouco a vantagem de se escrever código funcional e também a implementação do Ramda.
+Segue um exemplo comparando código imperativo e funcional:
 
-```
+```js
 
 const data = [
   { gender: 'male', name: 'John', age: 28 },
