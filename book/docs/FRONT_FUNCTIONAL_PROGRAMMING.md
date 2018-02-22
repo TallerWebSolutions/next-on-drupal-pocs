@@ -2,7 +2,7 @@
 
 * O paradigma funcional facilita a escrita de códigos modulares, desacoplados, facilmente testáveis, sem efeitos colaterais e de fácil manutenção. Algumas técnicas básicas podem ajudar a cumprir estes objetivos:
   * Funções puras: são funções que operam apenas com seus parâmetros
-  * Imutabilidade: abandono das variáveis pelas constantes. Em Javascript, isso pode ser uma tarefa difícil, e existem algumas bibliotecas que ajudam nesse processo ([Immutable](https://facebook.github.io/immutable-js/))
+  * Imutabilidade: preferencia por constantes, tratar variaveis como valores imutáveis. Em Javascript, isso pode ser uma tarefa difícil, e existem algumas bibliotecas que ajudam nesse processo ([Immutable](https://facebook.github.io/immutable-js/))
   * Uso de recursões ao invés de loops, o que auxilia na conquista da imutabilidade
   * Higher-order-functions: são funções que aceitam outras funções como parâmetro ou que retornam uma função
   * Closures: evita o uso de variáves globais
