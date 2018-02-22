@@ -5,6 +5,7 @@
   * modules (módulos de funcionalidades da app)
     * moduleName
       * components (Componentes React)
+        * \__tests__ (testes de snapshot)
       * containers (HOC que acoplam dados e lógica nos componentes)
       * form (components e containers relativos a formulários)
       * lib (lógicas específicas do módulo)
