@@ -1,31 +1,11 @@
 # Documentar padrões de convenções que usamos para front com React:
 
-* Princípios básicos da programação funcional, composição, imutabilidade, funções puras, etc...
-* Techs / libs utilizadas, por que e exemplo.
-  * Eslint
-  * EditorConfig (espaço em vez de tabs, etc...)
-  * Jest para testes
-  * Husky
-  * React Router (?)
-  * Redux
-  * Ramda
-  * Recompose
-* Estrutura de pastas, módulos, formulários, css, etc...
-* Separação de componentes: page / container / component.
-* Stateless e quando usar clases.
-  * Arrow functions ou bind?
-* Uso de React Apollo nos componentes.
-* Utilização de CSS Modules no Next.js ou SPA.
-
-
-* Automatização de revisão de código e qualidade
-  * EsLint
-  * Husky
-
-* Covertura de testes
-  * Jest
-
-* Programação funcional em React
-  * Stateless vs class component.
-    * Ramda
-    * Recompose
+## Sumário
+* [Preferência ao paradigma de programação funcional](docs/FRONT_FUNCTIONAL_PROGRAMMING.md)
+* [Garantia da qualidade de código (QA)](docs/FRONT_QUALITY_CODE.md)
+* [Estrutura de pastas da App](docs/FRONT_FOLDER_TREE.md)
+* [Criação de componentes visuais](docs/FRONT_STATELESS.md)
+* [Estilos](docs/FRONT_STYLE.md)
+* [Criação de containers](docs/FRONT_CONTAINER.md)
+* [Controle de estado](docs/FRONT_STATE.md)
+* [Consumo de API](docs/FRONT_API.md)

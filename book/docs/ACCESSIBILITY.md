@@ -1,4 +1,4 @@
-# Introdução a Acessibilidade
+# Introdução à Acessibilidade
 
 Acessibilidade na web é a pratica de tornar sua aplicação acessível para todas as pessoas, incluindo aqueles com deficiências (ou mobilidade reduzida) ou simplesmente pessoas que não são fluentes com tecnologia. Ou seja, permitir que todo usuário possa utilizar o produto / aplicação.
 

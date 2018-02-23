@@ -49,6 +49,49 @@ insert_final_newline = true
 
 Sugere-se usar [Jest](https://facebook.github.io/jest/), principalmente para aplicações que baseadas em React, para a criação de testes.
 
+### Snapshot test
+```js
+import React from 'react'
+import { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
+import DropDown from '../components/DropDown'
+
+const items = [
+  { title: 'Title 1' },
+  { title: 'Title 2' },
+  { title: 'Title 3' },
+]
+
+describe('[Component] DropDown', () => {
+  it('should match the last shallow snapshot', () => {
+    const component = shallow(<DropDown items={ items } />)
+    expect(toJson(component)).toMatchSnapshot()
+  })
+
+  it('should have class if open is true', () => {
+    const component = shallow(<DropDown open items={ items } />)
+    expect(component.find('li').first().hasClass('open')).toBe(true)
+  })
+})
+```
+
+####Output
+``` shell
+yarn test:unit src/components/DropDownTest/__tests__/DropDown.js
+yarn test:unit v0.16.1
+$ TZ='UTC' jest --config jest.config.json --verbose --no-cache src/components/DropDownTest/__tests__/DropDown.js
+ PASS  src/components/DropDownTest/__tests__/DropDown.js
+  [Component] DropDown
+    ✓ should match the last shallow snapshot (12ms)
+    ✓ should have class if open is true (4ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   1 passed, 1 total
+Time:        2.16s
+Ran all test suites matching "src/components/DropDownTest/__test
+```
+
 ## Automatização do QA de código
 
 ### Integrado ao GIT
