@@ -6,6 +6,7 @@
 * [PWA com Apollo](docs/APOLLO.md)
   * [Criando um projeto](docs/APOLLO_BASIC.md)
   * [Configurando a PWA](docs/APOLLO_PWA.md)
+* [Optimistic Updates](docs/OPTIMISTIC_UPDATES.md)
 * [Responsive Images](docs/PICTUREFILL.md)
   * [Criando um projeto](docs/PICTUREFILL_BASIC.md)
 * [Introdução ao Cache Busting](docs/CACHEBUSTING.md)
