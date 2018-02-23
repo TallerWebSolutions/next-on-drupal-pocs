@@ -17,9 +17,9 @@
 * [Introdução a Acessibilidade](docs/ACCESSIBILITY.md)
   * [Princípios básicos (POUR)](docs/ACCESSIBILITY_POUR.md)
   * [Faça / Não faça](docs/ACCESSIBILITY_DOS_DONTS.md)
-  * [Acessibilidade com React](docs/ACCESSIBILITY_REACT.md) 
+  * [Acessibilidade com React](docs/ACCESSIBILITY_REACT.md)
 * [Automatização de verificações](docs/HUSKY.md)
-* Referências de padrões de Front-end
+* [Referências de padrões de Front-end](docs/FRONTEND_PATTERNS.md)
   * [Preferência ao paradigma de programação funcional](docs/FRONT_FUNCTIONAL_PROGRAMMING.md)
   * [Qualidade de código](docs/FRONT_QUALITY_CODE.md)
   * [Estrutura de pastas da App](docs/FRONT_FOLDER_TREE.md)
