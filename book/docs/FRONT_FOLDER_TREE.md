@@ -28,4 +28,4 @@
 ## Legenda
 * **Module**: código relativo a um mesmo domínio de negócio;
 * **Component**: componentes React puramente presentacionais;
-* **Container**: componentes React concientes do estado ou da API;
+* **Container**: componentes React conscientes do estado ou da API;
