@@ -16,7 +16,7 @@
     "i18next-express-middleware": "^1.0.9",
     "i18next-node-fs-backend": "^1.0.0",
     "i18next-xhr-backend": "^1.5.1",
-    "next": "^4.2.3",
+    "next": "^9.3.2",
     "prop-types": "^15.6.0",
     "ramda": "^0.25.0",
     "react": "^16.2.0",
